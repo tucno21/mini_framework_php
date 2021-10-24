@@ -9,10 +9,12 @@ class Router
     public array $getRoutes = [];
     public array $postRoutes = [];
     public Request $request;
+    public static Router $routerApp;
 
 
     public function __construct()
     {
+        self::$routerApp = $this;
         $this->request = new Request();
     }
 

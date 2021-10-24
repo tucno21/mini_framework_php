@@ -2,25 +2,22 @@
 
 namespace App\Controller;
 
-use App\System\Router;
+use App\System\Controller;
 
-class HomeController
+class HomeController extends Controller
 {
-    public function home(Router $router)
+    public function home()
     {
-        $router->renderView('home', [
-            'hola' => 'hola como estas',
-            'hola2' => 'hola como estas 2',
-        ]);
+        return $this->view('home');
     }
 
-    public function login(Router $router)
+    public function login()
     {
-        $router->renderView('login');
+        return $this->view('login');
     }
 
-    public function register(Router $router)
+    public function register()
     {
-        $router->renderView('register');
+        return $this->view('register');
     }
 }
