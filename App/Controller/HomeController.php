@@ -14,13 +14,13 @@ class HomeController
         ]);
     }
 
-    public function login()
+    public function login(Router $router)
     {
-        echo 'desde el login';
+        $router->renderView('login');
     }
 
-    public function register()
+    public function register(Router $router)
     {
-        echo 'desde el registro';
+        $router->renderView('register');
     }
 }
