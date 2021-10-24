@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\System\Router;
+
 class HomeController
 {
-    public function home()
+    public function home(Router $router)
     {
-        echo 'desde el home';
+        $router->renderView('home', [
+            'hola' => 'hola como estas',
+            'hola2' => 'hola como estas 2',
+        ]);
     }
 
     public function login()

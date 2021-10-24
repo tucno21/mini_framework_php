@@ -26,5 +26,8 @@ function base_url($parameters = null)
 {
     return base_url . $parameters;
 }
-
+//ruta de documento public
 define('DIRPUBLIC', $_SERVER['DOCUMENT_ROOT']);
+
+//ruta padre de este archivo
+define('APPDIR', dirname(__DIR__));

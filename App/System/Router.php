@@ -50,13 +50,13 @@ class Router
             // $callback[0] = new $callback[0];
             $this->controller = new $callback[0];
             $callback[0] = $this->controller;
-            return call_user_func($callback);
+            return call_user_func($callback, $this);
         }
 
         //comprueba si es un objeto
         if (is_object($callback)) {
             // ejecuta la funcion callback
-            return call_user_func($callback);
+            return call_user_func($callback, $this);
         }
     }
 
@@ -74,5 +74,24 @@ class Router
         }
 
         return $callback;
+    }
+
+    public function renderView($view, $data = [])
+    {
+        $content = $this->renderOnlyView($view, $data);
+        include_once APPDIR . '/View/index.php';
+    }
+
+    //captura el contenido para el layaut
+    protected function renderOnlyView($view,  $data)
+    {
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
+        // dd($data);
+
+        ob_start();
+        include_once APPDIR . "/View/$view.php";
+        return ob_get_clean();
     }
 }
