@@ -32,7 +32,35 @@ class Router
 
     public function checkRoutes()
     {
-        d($this->request->getPath());
-        d($this->request->methodWeb());
+        $paramUrl = $this->request->getPath();
+        $methodUrl = $this->request->methodWeb();
+
+        if ($methodUrl === 'get') {
+            //buscar si existe el array en getRoutes enviado $routes->get('/login', 'funcion');
+            //para filtrar el segundo parametro por la captura del metodo
+            $callback = $this->getRoutes[$paramUrl] ?? null;
+        } else {
+            $callback = $this->postRoutes[$paramUrl] ?? null;
+        }
+
+        //cuando los parametros no existe en el router error 404
+        if ($callback == null) {
+            echo 'la pagina no existe';
+        }
+
+        //Comprueba si una variable es de tipo string
+        if (is_string($callback)) {
+            echo 'es solo un string';
+        }
+
+        //comprueba si es un array
+        if (is_array($callback)) {
+            echo 'es una funcion estatica';
+        }
+
+        //comprueba si es un objeto
+        if (is_object($callback)) {
+            echo 'es una objeto instanciado';
+        }
     }
 }
