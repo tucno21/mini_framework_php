@@ -1,5 +1,8 @@
 <?php
+
 require_once dirname(__DIR__) . '/Config/App.php';
+
+use App\System\Router;
 
 //debugear sin continuar con otros codigos de linea
 function dd($variable): string
@@ -32,8 +35,14 @@ define('DIRPUBLIC', $_SERVER['DOCUMENT_ROOT']);
 //ruta padre de este archivo
 define('APPDIR', dirname(__DIR__));
 
-
+//funcion para extender partes de php layout
 function extend($dirView)
 {
     include APPDIR . '/View' . $dirView;
+}
+
+//agregando funcion de render
+function View(string $name, array $data = [])
+{
+    return Router::$routerApp->renderView($name, $data);
 }
