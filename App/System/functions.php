@@ -26,3 +26,5 @@ function base_url($parameters = null)
 {
     return base_url . $parameters;
 }
+
+define('DIRPUBLIC', $_SERVER['DOCUMENT_ROOT']);
