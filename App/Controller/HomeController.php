@@ -9,18 +9,18 @@ class HomeController extends Controller
     public function home()
     {
 
-        return View('home', [
+        return view('home', [
             'var' => 'es una variable',
         ]);
     }
 
     public function login()
     {
-        return $this->view('login');
+        return view('login');
     }
 
     public function register()
     {
-        return $this->view('register');
+        return view('register');
     }
 }

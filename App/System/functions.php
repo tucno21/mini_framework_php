@@ -41,8 +41,10 @@ function extend($dirView)
     include APPDIR . '/View' . $dirView;
 }
 
-//agregando funcion de render
-function View(string $name, array $data = [])
-{
-    return Router::$routerApp->renderView($name, $data);
+if (!function_exists('view')) {
+    //agregando funcion de render
+    function view(string $name, array $data = [])
+    {
+        return Router::$routerApp->renderView($name, $data);
+    }
 }
