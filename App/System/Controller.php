@@ -10,4 +10,9 @@ class Controller
     {
         return Router::$routerApp->renderView($view, $data);
     }
+
+    public function redirect($view, $data = [])
+    {
+        return Router::$routerApp->renderView($view, $data);
+    }
 }

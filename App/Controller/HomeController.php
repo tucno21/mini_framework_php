@@ -16,7 +16,8 @@ class HomeController extends Controller
 
     public function login()
     {
-        return redirect('home');
+        // return redirect('home');
+        return $this->redirect('home');
         // return view('login');
     }
 
