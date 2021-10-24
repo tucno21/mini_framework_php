@@ -31,3 +31,9 @@ define('DIRPUBLIC', $_SERVER['DOCUMENT_ROOT']);
 
 //ruta padre de este archivo
 define('APPDIR', dirname(__DIR__));
+
+
+function extend($dirView)
+{
+    include APPDIR . '/View' . $dirView;
+}
