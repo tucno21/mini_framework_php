@@ -55,12 +55,17 @@ class Router
 
         //comprueba si es un array
         if (is_array($callback)) {
-            echo 'es una funcion estatica';
+            //convierte el primer string en objeto class
+            // $callback[0] = new $callback[0];
+            $this->controller = new $callback[0];
+            $callback[0] = $this->controller;
+            return call_user_func($callback);
         }
 
         //comprueba si es un objeto
         if (is_object($callback)) {
-            echo 'es una objeto instanciado';
+            // ejecuta la funcion callback
+            return call_user_func($callback);
         }
     }
 }
