@@ -41,10 +41,21 @@ function extend($dirView)
     include APPDIR . '/View' . $dirView;
 }
 
+//agregando funcion de render de vista
 if (!function_exists('view')) {
-    //agregando funcion de render
+
     function view(string $name, array $data = [])
     {
         return Router::$routerApp->renderView($name, $data);
+    }
+}
+
+//funcion de redireccionamiento
+if (!function_exists('redirect')) {
+    function redirect(string $name, array $data = [])
+    {
+        if (!empty($name)) {
+            return Router::$routerApp->renderView($name, $data);
+        }
     }
 }

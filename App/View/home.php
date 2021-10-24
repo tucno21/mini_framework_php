@@ -1,4 +1,4 @@
 <?= extend('/layout/head.php') ?>
 <h1>home</h1>
-<?= $var ?>
+<?= !empty($var) ? $var : '' ?>
 <?= extend('/layout/footer.php') ?>
