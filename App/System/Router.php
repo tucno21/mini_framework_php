@@ -32,16 +32,7 @@ class Router
 
     public function checkRoutes()
     {
-        $paramUrl = $this->request->getPath();
-        $methodUrl = $this->request->methodWeb();
-
-        if ($methodUrl === 'get') {
-            //buscar si existe el array en getRoutes enviado $routes->get('/login', 'funcion');
-            //para filtrar el segundo parametro por la captura del metodo
-            $callback = $this->getRoutes[$paramUrl] ?? null;
-        } else {
-            $callback = $this->postRoutes[$paramUrl] ?? null;
-        }
+        $callback = $this->searchRoutes();
 
         //cuando los parametros no existe en el router error 404
         if ($callback == null) {
@@ -67,5 +58,21 @@ class Router
             // ejecuta la funcion callback
             return call_user_func($callback);
         }
+    }
+
+    public function searchRoutes()
+    {
+        $paramUrl = $this->request->getPath();
+        $methodUrl = $this->request->methodWeb();
+
+        if ($methodUrl === 'get') {
+            //buscar si existe el array en getRoutes enviado $routes->get('/login', 'funcion');
+            //para filtrar el segundo parametro por la captura del metodo
+            $callback = $this->getRoutes[$paramUrl] ?? null;
+        } else {
+            $callback = $this->postRoutes[$paramUrl] ?? null;
+        }
+
+        return $callback;
     }
 }
