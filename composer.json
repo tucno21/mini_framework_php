@@ -1,0 +1,11 @@
+{
+    "name": "carlos/mini_framework_php",
+    "description": "base framework mini",
+    "authors": [
+        {
+            "name": "tucno21",
+            "email": "carlitostucno@gmail.com"
+        }
+    ],
+    "require": {}
+}
