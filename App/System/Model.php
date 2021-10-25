@@ -86,4 +86,17 @@ class Model
         $stmt->close();
         $stmt->null;
     }
+
+    //ELIMINAR
+    public function delete($id)
+    {
+        $query = "DELETE FROM " . static::$table . " WHERE id='$id'";
+        $stmt = self::$db->query($query);
+
+        if ($stmt) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
 }
