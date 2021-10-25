@@ -21,4 +21,26 @@ class Request
         //captura y tipo de HTTP y convierte en minuscula
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
+
+    public function isGet()
+    {
+        $data = [];
+        if ($this->methodWeb() === 'get') {
+            foreach ($_GET as $key => $value) {
+                $data[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+        }
+        return $data;
+    }
+
+    public function isPost()
+    {
+        $data = [];
+        if ($this->methodWeb() === 'post') {
+            foreach ($_POST as $key => $value) {
+                $data[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+        }
+        return $data;
+    }
 }

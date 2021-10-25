@@ -23,8 +23,11 @@ class HomeController extends Controller
 
     public function register()
     {
+        $data = $this->request()->isPost();
+        d($data);
+
         $db = new HomeModel();
-        d($db);
+        // d($db);
 
         return view('register');
     }

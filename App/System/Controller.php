@@ -15,4 +15,9 @@ class Controller
     {
         return Router::$routerApp->renderView($view, $data);
     }
+
+    public function request()
+    {
+        return Router::$routerApp->request;
+    }
 }
