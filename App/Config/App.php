@@ -7,4 +7,4 @@ $baseURL = 'http://mini_framework_php.test';
 $localhost = 'localhost';
 $user = 'root';
 $password = 'root';
-$dbName = 'blog';
+$dbName = 'mvc_framework';

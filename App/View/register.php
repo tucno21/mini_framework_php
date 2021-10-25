@@ -3,12 +3,12 @@
 <div class="container">
     <form action="" method="POST">
         <div class="mb-3">
-            <label class="form-label">Nombres</label>
+            <label class="form-label">Nombres y apellidos</label>
             <input name="name" type="text" class="form-control">
         </div>
         <div class="mb-3">
-            <label class="form-label">Apellidos</label>
-            <input name="surname" type="text" class="form-control">
+            <label class="form-label">Usuario</label>
+            <input name="username" type="text" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">email</label>
