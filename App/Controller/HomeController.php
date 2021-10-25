@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Model\HomeModel;
 use App\System\Controller;
 
 class HomeController extends Controller
 {
     public function home()
     {
+        $db = new HomeModel();
+        d($db);
 
         return view('home', [
             'var' => 'es una variable',
