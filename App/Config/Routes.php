@@ -10,6 +10,7 @@ $routes = new Router();
 $routes->get('/', [HomeController::class, 'home']);
 $routes->get('/login', [HomeController::class, 'login']);
 $routes->get('/register', [HomeController::class, 'register']);
+$routes->post('/register', [HomeController::class, 'register']);
 
 
 //ejecutar los los parametros enviados por get y post

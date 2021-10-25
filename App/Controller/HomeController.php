@@ -9,9 +9,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $db = new HomeModel();
-        d($db);
-
         return view('home', [
             'var' => 'es una variable',
         ]);
@@ -26,6 +23,9 @@ class HomeController extends Controller
 
     public function register()
     {
+        $db = new HomeModel();
+        d($db);
+
         return view('register');
     }
 }
