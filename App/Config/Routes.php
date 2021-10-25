@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__) . '/System/Config.php';
+require_once dirname(__DIR__) . '/System/Autoload.php';
 
 use App\System\Router;
 use App\Controller\HomeController;
