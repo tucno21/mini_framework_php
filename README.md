@@ -49,3 +49,10 @@ enviar vistas usando sin $this
 return view('login', []);
 return redirect('login', []);
 ```
+
+Capturar datos del get y post sanitizados PHP
+
+```
+$data = $this->request()->isGet();
+$data = $this->request()->isPost();
+```
