@@ -32,9 +32,6 @@ class Model
                 $fields[$val] = $data[$val];
             }
         }
-        // if (static::$useTimestamps == true) {
-        //     $atributos[static::$updatedField] = date('Y-m-d H:i:s');
-        // }
         //Limpia de codigo dañino
         $data = $this->sanitize($fields);
         return $data;
@@ -49,6 +46,35 @@ class Model
         $values = implode("', '", array_values($send));
 
         $query = "INSERT INTO " . static::$table . "($columns) VALUES ('$values')";
+        $stmt = self::$db->query($query);
+
+        if ($stmt) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt->null;
+    }
+
+
+    //ACTUALIZAR
+    public function update($id, $data)
+    {
+        $send = $this->allowedFields($data);
+        if (static::$useTimestamps == true) {
+            $send[static::$updatedField] = date('Y-m-d H:i:s');
+        }
+
+        $cv = [];
+        foreach ($send as $key => $value) {
+            $cv[] = "{$key}='{$value}'";
+        }
+
+        $columValue = join(', ', $cv);
+        $query = "UPDATE " . static::$table . " SET $columValue WHERE id= '$id'";
+
         $stmt = self::$db->query($query);
 
         if ($stmt) {
