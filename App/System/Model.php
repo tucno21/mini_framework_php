@@ -118,7 +118,7 @@ class Model
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
-        self::$db->free();
+        self::$db->close();
 
         return $mi_objeto;
     }
@@ -135,7 +135,7 @@ class Model
 
         $stmt = self::$db->query($query);
         $mi_objeto = mysqli_fetch_assoc($stmt);
-        self::$db->free();
+        self::$db->close();
 
 
         return $mi_objeto;
@@ -175,7 +175,7 @@ class Model
         }
 
         $stmt = self::$db->query($query);
-        self::$db->free();
+        self::$db->close();
 
         return $stmt->fetch_object();
     }
@@ -187,7 +187,7 @@ class Model
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
-        self::$db->free();
+        self::$db->close();
 
         return $mi_objeto;
     }
@@ -196,7 +196,7 @@ class Model
     public function queryFirst($query)
     {
         $stmt = self::$db->query($query);
-        self::$db->free();
+        self::$db->close();
 
         return $stmt->fetch_object();
     }
