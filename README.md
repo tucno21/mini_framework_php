@@ -56,3 +56,13 @@ Capturar datos del get y post sanitizados PHP
 $data = $this->request()->isGet();
 $data = $this->request()->isPost();
 ```
+
+## FUNCIONES MODEL
+
+Guardar, Actualizar y Eliminar
+
+```
+$homeModel->create($data);
+$homeModel->update($id, $data);
+$homeModel->delete($id, $data);
+```
