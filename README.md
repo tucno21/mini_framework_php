@@ -74,6 +74,7 @@ leer todo
 
 ```
 $homeModel->findAll();
+$homeModel->findAll($limit);
 $homeModel->columns($columns)->findAll();
 $homeModel->where($colum, $operator, $valueColum)->findAll();
 $homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->findAll();
@@ -92,6 +93,17 @@ $homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->firs
 
 $homeModel->where($colum, $valueColum)->first();
 $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
+```
+
+### Orden de modelo de consultaça
+
+se puede eliminar uno o varios, respetar el orden para no tener errores
+
+```
+$homeModel->columns($columns)
+          ->where($colum, $operator, $valueColum)
+          ->orderBy($colum, $order)
+          ->findAll($limit) // ->first();
 ```
 
 Buscar un registro con valor unico
