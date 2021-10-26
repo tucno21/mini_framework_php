@@ -12,6 +12,13 @@ class Model
     protected static $orderBy = null;
     protected static $columns = null;
 
+    protected static $passEncrypt = false;
+    protected static $password =  null;
+
+    // Dates
+    protected static $useTimestamps   = false;
+    protected static $updatedField    = null;
+
 
     // Definir la conexión a la BD
     public static function setDB($database)
@@ -45,7 +52,13 @@ class Model
     //CREAR
     public function create($data)
     {
+        $this->passEncrypt();
+
         $send = $this->allowedFields($data);
+
+        if (self::$passEncrypt === true) {
+            $send['password'] = password_hash($send['password'], PASSWORD_BCRYPT);
+        }
 
         $columns = implode(", ", array_keys($send));
         $values = implode("', '", array_values($send));
@@ -67,9 +80,17 @@ class Model
     //ACTUALIZAR
     public function update($id, $data)
     {
+        $this->passEncrypt();
+        $this->useTimestamps();
+
         $send = $this->allowedFields($data);
-        if (static::$useTimestamps == true) {
+
+        if (self::$useTimestamps == true) {
             $send[static::$updatedField] = date('Y-m-d H:i:s');
+        }
+
+        if (self::$passEncrypt === true) {
+            $send['password'] = password_hash($send['password'], PASSWORD_BCRYPT);
         }
 
         $cv = [];
@@ -206,5 +227,21 @@ class Model
         }
 
         return  $array;
+    }
+
+    private function passEncrypt()
+    {
+        if (property_exists(static::class, 'passEncrypt')) {
+            self::$passEncrypt = static::$passEncrypt;
+            self::$password = static::$password;
+        }
+    }
+
+    private function useTimestamps()
+    {
+        if (property_exists(static::class, 'useTimestamps')) {
+            self::$useTimestamps = static::$useTimestamps;
+            self::$updatedField = static::$updatedField;
+        }
     }
 }
