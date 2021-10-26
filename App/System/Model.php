@@ -54,7 +54,6 @@ class Model
         $stmt = self::$db->query($query);
 
         if (self::$db->affected_rows > 0) {
-            self::$db->free();
             return "ok";
         } else {
             return "error";
@@ -82,7 +81,6 @@ class Model
         $stmt = self::$db->query($query);
 
         if (self::$db->affected_rows > 0) {
-            self::$db->free();
             return "ok";
         } else {
             return "error";
@@ -101,7 +99,6 @@ class Model
         // dd($stmt);
         // if ($stmt) {
         if (self::$db->affected_rows > 0) {
-            self::$db->free();
             return "ok";
         } else {
             return "error";
