@@ -109,12 +109,20 @@ class Model
     }
 
     //LEER TODO TABLA
-    public function findAll()
+    public function findAll($limit = null)
     {
-        if (self::$columns != null) {
-            $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy;
+        if ($limit != null) {
+            if (self::$columns != null) {
+                $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy . " LIMIT $limit";
+            } else {
+                $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy . " LIMIT $limit";
+            }
         } else {
-            $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+            if (self::$columns != null) {
+                $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy;
+            } else {
+                $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+            }
         }
 
         $result = $this->readDB($query);
