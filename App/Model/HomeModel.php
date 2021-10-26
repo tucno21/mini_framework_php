@@ -6,7 +6,9 @@ use App\System\Model;
 
 class HomeModel extends Model
 {
-    protected static $table = 'users';
+    //Required fields
+    protected static $table       = 'users';
+    protected static $primaryKey  = 'id';
 
     protected static $allowedFields = ['username', 'email', 'password', 'name'];
 

@@ -74,9 +74,10 @@ class Model
         foreach ($send as $key => $value) {
             $cv[] = "{$key}='{$value}'";
         }
+        $primaryKey = static::$primaryKey;
 
         $columValue = join(', ', $cv);
-        $query = "UPDATE " . static::$table . " SET $columValue WHERE id= '$id'";
+        $query = "UPDATE " . static::$table . " SET $columValue WHERE $primaryKey= '$id'";
 
         $stmt = self::$db->query($query);
 
@@ -93,7 +94,9 @@ class Model
     //ELIMINAR
     public function delete($id)
     {
-        $query = "DELETE FROM " . static::$table . " WHERE id='$id'";
+        $primaryKey = static::$primaryKey;
+
+        $query = "DELETE FROM " . static::$table . " WHERE $primaryKey='$id'";
         $stmt = self::$db->query($query);
 
         if ($stmt) {
@@ -155,8 +158,8 @@ class Model
         if ($colum != null) {
             $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
         } else {
-            $colum = "id";
-            $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
+            $primaryKey = static::$primaryKey;
+            $query = "SELECT * FROM " . static::$table . " WHERE $primaryKey = '$id'";
         }
 
         $stmt = self::$db->query($query);
