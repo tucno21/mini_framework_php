@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->create($data);
+        $db = $homeModel->queryFirst('SELECT * FROM users');
 
         d($db);
 

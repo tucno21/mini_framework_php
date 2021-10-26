@@ -52,7 +52,6 @@ class Model
 
         $query = "INSERT INTO " . static::$table . "($columns) VALUES ('$values')";
         $stmt = self::$db->query($query);
-        d($stmt);
 
         if (self::$db->affected_rows > 0 || $stmt) {
             return [
@@ -118,16 +117,8 @@ class Model
             $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
         }
 
-        // dd($query);
-        $stmt = self::$db->query($query);
-        self::$db->close();
-
-        $array = [];
-        while ($object = $stmt->fetch_object()) {
-            $array[] = $object;
-        }
-
-        return  $array;
+        $result = $this->readDB($query);
+        return $result;
     }
 
 
@@ -140,10 +131,8 @@ class Model
             $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
         }
 
-        $stmt = self::$db->query($query);
-        self::$db->close();
-
-        return $stmt->fetch_object();
+        $result = $this->readDB($query);
+        return $result[0];
     }
 
     public function where($colum, $operator = null, $valueColum = null)
@@ -170,7 +159,7 @@ class Model
     }
 
     //BUSCAR UNA FILA POR SU ID
-    public static function find($id, $colum = null)
+    public function find($id, $colum = null)
     {
         if ($colum != null) {
             $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
@@ -179,15 +168,26 @@ class Model
             $query = "SELECT * FROM " . static::$table . " WHERE $primaryKey = '$id'";
         }
 
-        $stmt = self::$db->query($query);
-        self::$db->close();
-
-        return $stmt->fetch_object();
+        $result = $this->readDB($query);
+        return $result[0];
     }
 
 
     //RECIVE UN QUERY Y ENVIA GRUPOS DE OBJETOS
     public function queryAll($query)
+    {
+        $result = $this->readDB($query);
+        return $result;
+    }
+
+    //RECIVE UN QUERY Y ENVIA UN OBJETO
+    public function queryFirst($query)
+    {
+        $result = $this->readDB($query);
+        return $result[0];
+    }
+
+    private function readDB($query)
     {
         $stmt = self::$db->query($query);
         self::$db->close();
@@ -198,14 +198,5 @@ class Model
         }
 
         return  $array;
-    }
-
-    //RECIVE UN QUERY Y ENVIA UN OBJETO
-    public function queryFirst($query)
-    {
-        $stmt = self::$db->query($query);
-        self::$db->close();
-
-        return $stmt->fetch_object();
     }
 }
