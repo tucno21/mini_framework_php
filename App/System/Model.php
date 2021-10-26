@@ -53,14 +53,12 @@ class Model
         $query = "INSERT INTO " . static::$table . "($columns) VALUES ('$values')";
         $stmt = self::$db->query($query);
 
-        if ($stmt) {
+        if (self::$db->affected_rows > 0) {
+            self::$db->close();
             return "ok";
         } else {
             return "error";
         }
-
-        $stmt->close();
-        $stmt->null;
     }
 
 
@@ -83,14 +81,12 @@ class Model
 
         $stmt = self::$db->query($query);
 
-        if ($stmt) {
+        if (self::$db->affected_rows > 0) {
+            self::$db->close();
             return "ok";
         } else {
             return "error";
         }
-
-        $stmt->close();
-        $stmt->null;
     }
 
     //ELIMINAR
@@ -99,15 +95,18 @@ class Model
         $primaryKey = static::$primaryKey;
 
         $query = "DELETE FROM " . static::$table . " WHERE $primaryKey='$id'";
-        $stmt = self::$db->query($query);
 
-        if ($stmt) {
+        $stmt = self::$db->query($query) === true;
+        // dd(self::$db->affected_rows);
+        // dd($stmt);
+        // if ($stmt) {
+        if (self::$db->affected_rows > 0) {
+            self::$db->close();
             return "ok";
         } else {
             return "error";
         }
     }
-
 
     //LEER TODO TABLA
     public function findAll()
@@ -122,10 +121,9 @@ class Model
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
-        return $mi_objeto;
+        self::$db->close();
 
-        $stmt->close();
-        $stmt->null;
+        return $mi_objeto;
     }
 
 
@@ -140,10 +138,10 @@ class Model
 
         $stmt = self::$db->query($query);
         $mi_objeto = mysqli_fetch_assoc($stmt);
-        return $mi_objeto;
+        self::$db->close();
 
-        $stmt->close();
-        $stmt->null;
+
+        return $mi_objeto;
     }
 
     public function where($colum, $operator = null, $valueColum = null)
@@ -180,10 +178,9 @@ class Model
         }
 
         $stmt = self::$db->query($query);
-        return $stmt->fetch_object();
+        self::$db->close();
 
-        $stmt->close();
-        $stmt->null;
+        return $stmt->fetch_object();
     }
 
 
@@ -193,22 +190,17 @@ class Model
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
-        return $mi_objeto;
+        self::$db->close();
 
-        if ($stmt) {
-            return "ok";
-        } else {
-            return "error";
-        }
+        return $mi_objeto;
     }
 
     //RECIVE UN QUERY Y ENVIA UN OBJETO
     public function queryFirst($query)
     {
         $stmt = self::$db->query($query);
-        return $stmt->fetch_object();
+        self::$db->close();
 
-        $stmt->close();
-        $stmt->null;
+        return $stmt->fetch_object();
     }
 }
