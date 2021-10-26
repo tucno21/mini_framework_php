@@ -132,7 +132,11 @@ class Model
     //TRAER EL PRIMER REGISTRO
     public function first()
     {
-        $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+        if (self::$columns != null) {
+            $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy;
+        } else {
+            $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+        }
 
         $stmt = self::$db->query($query);
         $mi_objeto = mysqli_fetch_assoc($stmt);
