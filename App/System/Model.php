@@ -52,9 +52,13 @@ class Model
 
         $query = "INSERT INTO " . static::$table . "($columns) VALUES ('$values')";
         $stmt = self::$db->query($query);
+        d($stmt);
 
-        if (self::$db->affected_rows > 0) {
-            return "ok";
+        if (self::$db->affected_rows > 0 || $stmt) {
+            return [
+                'result' =>  'ok',
+                'id' => self::$db->insert_id
+            ];
         } else {
             return "error";
         }
@@ -94,7 +98,7 @@ class Model
 
         $query = "DELETE FROM " . static::$table . " WHERE $primaryKey='$id'";
 
-        $stmt = self::$db->query($query) === true;
+        $stmt = self::$db->query($query);
         // dd(self::$db->affected_rows);
         // dd($stmt);
         // if ($stmt) {
@@ -116,11 +120,14 @@ class Model
 
         // dd($query);
         $stmt = self::$db->query($query);
-        $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
-        $mi_objeto = json_decode(json_encode($resultadato));
         self::$db->close();
 
-        return $mi_objeto;
+        $array = [];
+        while ($object = $stmt->fetch_object()) {
+            $array[] = $object;
+        }
+
+        return  $array;
     }
 
 
@@ -134,11 +141,9 @@ class Model
         }
 
         $stmt = self::$db->query($query);
-        $mi_objeto = mysqli_fetch_assoc($stmt);
         self::$db->close();
 
-
-        return $mi_objeto;
+        return $stmt->fetch_object();
     }
 
     public function where($colum, $operator = null, $valueColum = null)
@@ -185,11 +190,14 @@ class Model
     public function queryAll($query)
     {
         $stmt = self::$db->query($query);
-        $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
-        $mi_objeto = json_decode(json_encode($resultadato));
         self::$db->close();
 
-        return $mi_objeto;
+        $array = [];
+        while ($object = $stmt->fetch_object()) {
+            $array[] = $object;
+        }
+
+        return  $array;
     }
 
     //RECIVE UN QUERY Y ENVIA UN OBJETO
