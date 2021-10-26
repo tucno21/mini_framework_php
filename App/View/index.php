@@ -1,2 +1,2 @@
-<!-- no eliminar este archivo porque recive todo el contenido del render -->
+<!-- no eliminar este archivo porque captura todo el contenido del render -->
 <?= $content ?>

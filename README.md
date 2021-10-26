@@ -19,7 +19,20 @@ linea de comando necesario
 composer install
 ```
 
-## Uso de public/index.php
+## CONFIGURACIONES BASICAS DE URL Y CONECCIÓN
+
+Rutas para la web (App/Config/App.php)
+
+```
+$baseURL = 'www.myweb.com';
+
+$localhost = 'localhost';
+$user = 'root';
+$password = 'root';
+$dbName = 'mvc_framework';
+```
+
+## RUTAS WEB
 
 Rutas para la web (App/Config/Routes.php)
 
@@ -32,6 +45,38 @@ $router->get('/login', function () {
 });
 
 $router->get('/string', 'funcion');
+```
+
+## FUNCIONES GENERALES
+
+depurar $variables
+
+```
+dd($variable);
+d($variable);
+```
+
+Ruta Web principal
+
+```
+<?= base_url ?>/login
+<?= base_url('/login') ?>
+```
+
+Ruta sistemma
+
+```
+DIRPUBLIC  //carpeta pública
+APPDIR     //carpeta App
+```
+
+## FUNCIONES PARA EL MODELO
+
+Layout o modelo base /View
+captura la parte del HTML
+
+```
+<?= extend('/layout/head.php') ?>
 ```
 
 ## FUNCIONES CONTROLADOR
