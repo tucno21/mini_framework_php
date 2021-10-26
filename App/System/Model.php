@@ -8,6 +8,8 @@ class Model
     protected static $table = '';
     protected static $allowedFields = [];
 
+    protected static $where = null;
+
     // Definir la conexión a la BD
     public static function setDB($database)
     {
@@ -98,5 +100,39 @@ class Model
         } else {
             return "error";
         }
+    }
+
+
+    //LEER TODO TABLA
+    public function findAll()
+    {
+        $query = "SELECT * FROM " . static::$table . self::$where;
+        $stmt = self::$db->query($query);
+        $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+        $mi_objeto = json_decode(json_encode($resultadato));
+        return $mi_objeto;
+
+        $stmt->close();
+        $stmt->null;
+    }
+
+
+    //TRAER EL PRIMER REGISTRO
+    public function first()
+    {
+        $query = "SELECT * FROM " . static::$table . self::$where;
+
+        $stmt = self::$db->query($query);
+        $mi_objeto = mysqli_fetch_assoc($stmt);
+        return $mi_objeto;
+
+        $stmt->close();
+        $stmt->null;
+    }
+
+    public function where($colum, $valorColum)
+    {
+        self::$where = " WHERE $colum = '$valorColum'";
+        return $this;
     }
 }

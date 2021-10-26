@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->delete(3);
+        $db = $homeModel->where('password', 123)->first();
 
         d($db);
 
