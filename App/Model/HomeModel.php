@@ -15,6 +15,7 @@ class HomeModel extends Model
     //the field must be the same $allowedFields
     protected static $passEncrypt = true;
     protected static $password = 'password'; //password_hash($password, PASSWORD_BCRYPT)
+    //password_verify(Input['password'], $result->password) //true - false;
 
     // Dates
     protected static $useTimestamps   = true;
