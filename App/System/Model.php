@@ -10,6 +10,8 @@ class Model
 
     protected static $where = null;
     protected static $orderBy = null;
+    protected static $columns = null;
+
 
     // Definir la conexión a la BD
     public static function setDB($database)
@@ -110,7 +112,12 @@ class Model
     //LEER TODO TABLA
     public function findAll()
     {
-        $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+        if (self::$columns != null) {
+            $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy;
+        } else {
+            $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+        }
+
         // dd($query);
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
@@ -143,6 +150,12 @@ class Model
             self::$where = " WHERE $colum = '$valueColum'";
         }
 
+        return $this;
+    }
+
+    public function columns($columns)
+    {
+        self::$columns = $columns;
         return $this;
     }
 

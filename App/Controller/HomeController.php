@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->find(4);
+        $db = $homeModel->columns('email, username')->findAll();
 
         d($db);
 
