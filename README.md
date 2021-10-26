@@ -92,6 +92,18 @@ $homeModel->where($colum, $valueColum)->first();
 $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
 ```
 
+Buscar un registro con valor unico
+
+```
+$homeModel->find($id);
+```
+
+Alternativa de find(); / primero el valor y luego la columna
+
+```
+$homeModel->find($id, $colum);
+```
+
 ## EJEMPLOS
 
 ```
@@ -102,4 +114,7 @@ where('name', 'like', 'T%')
 
 orderBy('name', 'desc')
 orderBy('email', 'asc')
+
+find(3);
+find('a@a.com', 'email');
 ```
