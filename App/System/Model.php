@@ -108,7 +108,7 @@ class Model
     public function findAll()
     {
         $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
-
+        // dd($query);
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
@@ -132,9 +132,14 @@ class Model
         $stmt->null;
     }
 
-    public function where($colum, $valorColum)
+    public function where($colum, $operator = null, $valueColum = null)
     {
-        self::$where = " WHERE $colum = '$valorColum'";
+        if ($operator != null && $valueColum != null) {
+            self::$where = " WHERE $colum $operator '$valueColum'";
+        } else {
+            self::$where = " WHERE $colum = '$valueColum'";
+        }
+
         return $this;
     }
 

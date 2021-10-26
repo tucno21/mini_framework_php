@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->orderBy('id', 'desc')->findAll();
+        $db = $homeModel->where('username', 'like', '%in2%')->findAll();
 
         d($db);
 
