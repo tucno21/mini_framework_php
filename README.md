@@ -74,6 +74,7 @@ leer todo
 
 ```
 $homeModel->findAll();
+$homeModel->columns($columns)->findAll();
 $homeModel->where($colum, $operator, $valueColum)->findAll();
 $homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->findAll();
 
@@ -85,6 +86,7 @@ leer el primero
 
 ```
 $homeModel->first();
+$homeModel->columns($columns)->first();
 $homeModel->where($colum, $operator, $valueColum)->first();
 $homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->first();
 
@@ -107,6 +109,9 @@ $homeModel->find($id, $colum);
 ## EJEMPLOS
 
 ```
+columns('email')
+columns('email, username')
+
 where('active', 1)
 where('votes', '>=', 100)
 where('votes', '<>', 100)
