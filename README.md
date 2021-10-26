@@ -106,6 +106,13 @@ Alternativa de find(); / primero el valor y luego la columna
 $homeModel->find($id, $colum);
 ```
 
+CONSULTA personalizada
+
+```
+$homeModel->queryFirst($query);
+$homeModel->queryAll($query);
+```
+
 ## EJEMPLOS
 
 ```
@@ -122,4 +129,6 @@ orderBy('email', 'asc')
 
 find(3);
 find('a@a.com', 'email');
+
+queryFirst('SELECT * FROM users');
 ```
