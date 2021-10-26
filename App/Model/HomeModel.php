@@ -21,4 +21,20 @@ class HomeModel extends Model
     protected static $useTimestamps   = true;
     protected static $createdField    = 'created_at'; //no sirve
     protected static $updatedField    = 'updated_at';
+
+
+    //own function of the model
+    public function newQuery()
+    {
+        // $data = $this->queryFirst('SELECT * FROM users');
+        $data = $this->queryAll('SELECT * FROM users');
+        return $data;
+    }
+
+    //own function of the model
+    public function queryNew()
+    {
+        $data = self::$db->query('SELECT * FROM users');
+        return $data;
+    }
 }
