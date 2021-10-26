@@ -148,4 +148,21 @@ class Model
         self::$orderBy = " ORDER BY $colum " . strtoupper($order);
         return $this;
     }
+
+    //BUSCAR UNA FILA POR SU ID
+    public static function find($id, $colum = null)
+    {
+        if ($colum != null) {
+            $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
+        } else {
+            $colum = "id";
+            $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
+        }
+
+        $stmt = self::$db->query($query);
+        return $stmt->fetch_object();
+
+        $stmt->close();
+        $stmt->null;
+    }
 }
