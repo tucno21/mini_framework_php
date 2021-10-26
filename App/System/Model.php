@@ -41,7 +41,7 @@ class Model
     }
 
     //CREAR
-    public function save($data)
+    public function create($data)
     {
         $send = $this->allowedFields($data);
 
