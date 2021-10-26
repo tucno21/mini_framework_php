@@ -63,14 +63,14 @@ Ruta Web principal
 <?= base_url('/login') ?>
 ```
 
-Ruta sistemma
+Ruta sistema
 
 ```
 DIRPUBLIC  //carpeta pública
 APPDIR     //carpeta App
 ```
 
-## FUNCIONES PARA EL MODELO
+## FUNCIONES PARA EL VISTA
 
 Layout o modelo base /View
 captura la parte del HTML
@@ -88,7 +88,7 @@ return $this->view('login', []);
 return $this->redirect('login', []);
 ```
 
-enviar vistas usando sin $this
+enviar vistas sin $this
 
 ```
 return view('login', []);
