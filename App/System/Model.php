@@ -185,4 +185,30 @@ class Model
         $stmt->close();
         $stmt->null;
     }
+
+
+    //RECIVE UN QUERY Y ENVIA GRUPOS DE OBJETOS
+    public function queryAll($query)
+    {
+        $stmt = self::$db->query($query);
+        $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+        $mi_objeto = json_decode(json_encode($resultadato));
+        return $mi_objeto;
+
+        if ($stmt) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
+
+    //RECIVE UN QUERY Y ENVIA UN OBJETO
+    public function queryFirst($query)
+    {
+        $stmt = self::$db->query($query);
+        return $stmt->fetch_object();
+
+        $stmt->close();
+        $stmt->null;
+    }
 }
