@@ -9,6 +9,7 @@ class Model
     protected static $allowedFields = [];
 
     protected static $where = null;
+    protected static $orderBy = null;
 
     // Definir la conexión a la BD
     public static function setDB($database)
@@ -106,7 +107,8 @@ class Model
     //LEER TODO TABLA
     public function findAll()
     {
-        $query = "SELECT * FROM " . static::$table . self::$where;
+        $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
+
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
         $mi_objeto = json_decode(json_encode($resultadato));
@@ -120,7 +122,7 @@ class Model
     //TRAER EL PRIMER REGISTRO
     public function first()
     {
-        $query = "SELECT * FROM " . static::$table . self::$where;
+        $query = "SELECT * FROM " . static::$table . self::$where . self::$orderBy;
 
         $stmt = self::$db->query($query);
         $mi_objeto = mysqli_fetch_assoc($stmt);
@@ -133,6 +135,12 @@ class Model
     public function where($colum, $valorColum)
     {
         self::$where = " WHERE $colum = '$valorColum'";
+        return $this;
+    }
+
+    public function orderBy($colum, $order)
+    {
+        self::$orderBy = " ORDER BY $colum " . strtoupper($order);
         return $this;
     }
 }

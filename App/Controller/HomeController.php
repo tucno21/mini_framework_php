@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->where('password', 123)->first();
+        $db = $homeModel->orderBy('id', 'desc')->findAll();
 
         d($db);
 
