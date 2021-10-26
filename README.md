@@ -21,7 +21,7 @@ composer install
 
 ## Uso de public/index.php
 
-Rutas para la web
+Rutas para la web (App/Config/Routes.php)
 
 ```
 $router->get('/', [Controller::class, 'index']);
@@ -59,10 +59,35 @@ $data = $this->request()->isPost();
 
 ## FUNCIONES MODEL
 
+Instancia el modelo al controlador
+
 Guardar, Actualizar y Eliminar
 
 ```
 $homeModel->create($data);
 $homeModel->update($id, $data);
-$homeModel->delete($id, $data);
+$homeModel->delete($id);
+```
+
+LEER TABLA
+leer todo
+
+```
+$homeModel->findAll();
+$homeModel->where($colum, $operator, $valueColum)->findAll();
+$homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->findAll();
+
+$homeModel->where($colum, $valueColum)->findAll();
+$homeModel->where($colum, $valueColum)->orderBy($colum, $order)->findAll();
+```
+
+leer el primero
+
+```
+$homeModel->first();
+$homeModel->where($colum, $operator, $valueColum)->first();
+$homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->first();
+
+$homeModel->where($colum, $valueColum)->first();
+$homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
 ```
