@@ -95,7 +95,7 @@ $homeModel->where($colum, $valueColum)->first();
 $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
 ```
 
-### Orden de modelo de consultaça
+### Orden de modelo de consulta
 
 se puede eliminar uno o varios, respetar el orden para no tener errores
 
