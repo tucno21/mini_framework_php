@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $homeModel = new HomeModel();
 
-        $db = $homeModel->findAll(5);
+        $db = $homeModel->delete(9);
 
         d($db);
 

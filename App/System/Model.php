@@ -79,7 +79,7 @@ class Model
         $primaryKey = static::$primaryKey;
 
         $columValue = join(', ', $cv);
-        $query = "UPDATE " . static::$table . " SET $columValue WHERE $primaryKey= '$id'";
+        $query = "UPDATE " . static::$table . " SET $columValue WHERE $primaryKey= '" . self::$db->escape_string($id) . "'";
 
         $stmt = self::$db->query($query);
 
@@ -95,7 +95,7 @@ class Model
     {
         $primaryKey = static::$primaryKey;
 
-        $query = "DELETE FROM " . static::$table . " WHERE $primaryKey='$id'";
+        $query = "DELETE FROM " . static::$table . " WHERE $primaryKey= '" . self::$db->escape_string($id) . "'";
 
         $stmt = self::$db->query($query);
         // dd(self::$db->affected_rows);
@@ -173,7 +173,7 @@ class Model
             $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
         } else {
             $primaryKey = static::$primaryKey;
-            $query = "SELECT * FROM " . static::$table . " WHERE $primaryKey = '$id'";
+            $query = "SELECT * FROM " . static::$table . " WHERE $primaryKey= '" . self::$db->escape_string($id) . "'";
         }
 
         $result = $this->readDB($query);
