@@ -91,3 +91,15 @@ $homeModel->where($colum, $operator, $valueColum)->orderBy($colum, $order)->firs
 $homeModel->where($colum, $valueColum)->first();
 $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
 ```
+
+## EJEMPLOS
+
+```
+where('active', 1)
+where('votes', '>=', 100)
+where('votes', '<>', 100)
+where('name', 'like', 'T%')
+
+orderBy('name', 'desc')
+orderBy('email', 'asc')
+```
