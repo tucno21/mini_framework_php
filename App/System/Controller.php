@@ -20,4 +20,10 @@ class Controller
     {
         return Router::$routerApp->request;
     }
+
+    public function validate($inputs, $rules)
+    {
+        $data = new Validation;
+        return $data->validate($inputs, $rules);
+    }
 }
