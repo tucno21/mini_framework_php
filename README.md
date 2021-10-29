@@ -23,7 +23,7 @@ composer install
 
 Rutas para la web (App/Config/App.php)
 
-```
+```php
 $baseURL = 'www.myweb.com';
 
 $localhost = 'localhost';
@@ -36,7 +36,7 @@ $dbName = 'mvc_framework';
 
 Rutas para la web (App/Config/Routes.php)
 
-```
+```php
 $router->get('/', [Controller::class, 'index']);
 $router->post('/login', [Controller::class, 'index']);
 
@@ -51,21 +51,21 @@ $router->get('/string', 'funcion');
 
 depurar $variables
 
-```
+```php
 dd($variable);
 d($variable);
 ```
 
 Ruta Web principal
 
-```
+```php
 <?= base_url ?>/login
 <?= base_url('/login') ?>
 ```
 
 Ruta sistema
 
-```
+```php
 DIRPUBLIC  //carpeta pública
 APPDIR     //carpeta App
 ```
@@ -75,7 +75,7 @@ APPDIR     //carpeta App
 Layout o modelo base /View
 captura la parte del HTML
 
-```
+```php
 <?= extend('/layout/head.php') ?>
 ```
 
@@ -83,21 +83,21 @@ captura la parte del HTML
 
 enviar vistas usando $this
 
-```
+```php
 return $this->view('login', []);
 return $this->redirect('login', []);
 ```
 
 enviar vistas sin $this
 
-```
+```php
 return view('login', []);
 return redirect('login', []);
 ```
 
 Capturar datos del get y post sanitizados PHP
 
-```
+```php
 $data = $this->request()->isGet();
 $data = $this->request()->isPost();
 ```
@@ -108,7 +108,7 @@ Instancia el modelo al controlador
 
 Guardar, Actualizar y Eliminar
 
-```
+```php
 $homeModel->create($data);
 $homeModel->update($id, $data);
 $homeModel->delete($id);
@@ -117,7 +117,7 @@ $homeModel->delete($id);
 LEER TABLA
 leer todo
 
-```
+```php
 $homeModel->findAll();
 $homeModel->findAll($limit);
 $homeModel->columns($columns)->findAll();
@@ -130,7 +130,7 @@ $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->findAll();
 
 leer el primero
 
-```
+```php
 $homeModel->first();
 $homeModel->columns($columns)->first();
 $homeModel->where($colum, $operator, $valueColum)->first();
@@ -144,7 +144,7 @@ $homeModel->where($colum, $valueColum)->orderBy($colum, $order)->first();
 
 se puede eliminar uno o varios, respetar el orden para no tener errores
 
-```
+```php
 $homeModel->columns($columns)
           ->where($colum, $operator, $valueColum)
           ->orderBy($colum, $order)
@@ -153,26 +153,26 @@ $homeModel->columns($columns)
 
 Buscar un registro con valor unico
 
-```
+```php
 $homeModel->find($id);
 ```
 
 Alternativa de find(); / primero el valor y luego la columna
 
-```
+```php
 $homeModel->find($id, $colum);
 ```
 
 CONSULTA personalizada
 
-```
+```php
 $homeModel->queryFirst($query);
 $homeModel->queryAll($query);
 ```
 
 ## EJEMPLOS
 
-```
+```php
 columns('email')
 columns('email, username')
 
@@ -194,7 +194,7 @@ queryFirst('SELECT * FROM users');
 
 desde el controlador y enviar datos
 
-```
+```php
 $validator = $this->validate($data, [
     'name' => 'required|choice:loco',
     'email' => 'required|email|unique:HomeModel,email',
@@ -233,3 +233,5 @@ d($validator);
 | `matches:2input`         | Compara la igualdad de dos entradas                                | `matches:co_password` |
 | `unique:model,colum`     | Entrada unica que no coincida con la BD                            | `unique:users,email`  |
 | `not_unique:model,colum` | Entrada existente en la BD                                         | `not_unique:city,id`  |
+
+## Creditos
