@@ -3,6 +3,7 @@
 namespace App\System;
 
 use App\System\Router;
+use App\Library\Validation\Validation;
 
 class Controller
 {
@@ -23,7 +24,12 @@ class Controller
 
     public function validate($inputs, $rules)
     {
-        $data = new Validation;
-        return $data->validate($inputs, $rules);
+        // $mm = new Validation;
+        // return $mm->validate($inputs, $rules);
+        return Validation::validate($inputs, $rules);
     }
+    // public function validate($inputs, $rules)
+    // {
+    //     return Validation::validation($inputs, $rules);
+    // }
 }

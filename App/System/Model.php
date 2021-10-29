@@ -169,7 +169,7 @@ class Model
         if ($operator != null && $valueColum != null) {
             self::$where = " WHERE $colum $operator '$valueColum'";
         } else {
-            self::$where = " WHERE $colum = '$valueColum'";
+            self::$where = " WHERE $colum = '$operator'";
         }
 
         return $this;

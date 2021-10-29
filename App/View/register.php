@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Confirmar Password</label>
-            <input name="repassword" type="password" class="form-control">
+            <input name="password_confirm" type="password" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Registrarme</button>
