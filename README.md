@@ -235,3 +235,12 @@ d($validator);
 | `not_unique:model,colum` | Entrada existente en la BD                                         | `not_unique:city,id`  |
 
 ## Creditos
+
+modificacion para la validacion del formulario de:
+
+https://github.com/mkakpabla/form-validation-php#readme
+https://github.com/booomerang/Validatr/tree/master/src
+
+inspirado en:
+https://codeigniter.com/user_guide/libraries/validation.html
+https://laravel.com/docs/8.x/validation
