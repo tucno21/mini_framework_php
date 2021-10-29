@@ -189,3 +189,10 @@ find('a@a.com', 'email');
 
 queryFirst('SELECT * FROM users');
 ```
+
+## Validaciones de Inputs
+
+| Regla        | Descripción                                                       | Ejemplo |
+| ------------ | ----------------------------------------------------------------- | ------- |
+| `git status` | Enumera todos los archivos _nuevos o modificados_                 |         |
+| `git diff`   | Muestra las diferencias de archivo que **no han sido** preparadas |         |
