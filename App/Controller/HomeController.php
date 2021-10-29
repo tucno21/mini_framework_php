@@ -26,7 +26,7 @@ class HomeController extends Controller
         $data = $this->request()->isPost();
 
         $validator = $this->validate($data, [
-            'name' => 'required|slug',
+            'name' => 'required|choice:loco',
             'email' => 'required|email|not_unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
         ]);

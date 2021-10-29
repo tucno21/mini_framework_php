@@ -192,7 +192,44 @@ queryFirst('SELECT * FROM users');
 
 ## Validaciones de Inputs
 
-| Regla        | Descripción                                                       | Ejemplo |
-| ------------ | ----------------------------------------------------------------- | ------- |
-| `git status` | Enumera todos los archivos _nuevos o modificados_                 |         |
-| `git diff`   | Muestra las diferencias de archivo que **no han sido** preparadas |         |
+desde el controlador y enviar datos
+
+```
+$validator = $this->validate($data, [
+    'name' => 'required|choice:loco',
+    'email' => 'required|email|unique:HomeModel,email',
+    'password' => 'required|min:3|max:12|matches:password_confirm',
+    ]);
+
+d($validator);
+```
+
+| Regla                    | Descripción                                                        | Ejemplo               |
+| ------------------------ | ------------------------------------------------------------------ | --------------------- |
+| `alpha`                  | Entrada solo caracteres alfabéticos.                               |                       |
+| `alpha_space`            | Entrada solo de caracteres alfabéticos y espacios.                 |                       |
+| `alpha_dash`             | Entrada solo de caracteres alfanuméricos, guiones bajos y guiones. |                       |
+| `alpha_numeric`          | Entrada solo de caracteres alfanuméricos.                          |                       |
+| `alpha_numeric_space`    | Entrada solo de caracteres alfanuméricos y de espacio.             |                       |
+| `decimal`                | Entrada solo número decimal.                                       |                       |
+| `integer`                | Entrada solo de número entero.                                     |                       |
+| `is_natural`             | Entrada solo de numeros naturales.                                 |                       |
+| `is_natural_no_zero`     | Entrada solo de numeros naturales y debe ser mayor que cero        |                       |
+| `numeric`                | Entrada solo de números                                            |                       |
+| `required`               | Entrada no vacio, es obligatorio                                   |                       |
+| `email`                  | Entrada en formato email                                           |                       |
+| `url`                    | Entrada formato URL                                                |                       |
+| `min:number`             | Mínimo de "number" caracteres                                      | `min:3`               |
+| `max:number`             | Máximo de "number" caracteres                                      | `max:9`               |
+| `string`                 | Entrda solo cadena de texto                                        |                       |
+| `confirm`                | Dos entradas iguales, la segunda agregar "\_confirm"               |                       |
+| `slug`                   | Entrada tipo slug **aa-bb-cc**                                     |                       |
+| `text`                   | Entrada solo texto                                                 |                       |
+| `choice:param`           | La Entrada debe ser igual al establecido en **param**              | `choice:hello`        |
+| `between:min,max`        | entra minima y maxima de caracteres                                | `between:3,8`         |
+| `datetime`               | Entrada solo de fecha y hora **Y-m-d H:i:s**                       |                       |
+| `time`                   | Entrada solo de hora **H:i:s**                                     |                       |
+| `date`                   | Entrada solo de fecha **Y-m-d**                                    |                       |
+| `matches:2input`         | Compara la igualdad de dos entradas                                | `matches:co_password` |
+| `unique:model,colum`     | Entrada unica que no coincida con la BD                            | `unique:users,email`  |
+| `not_unique:model,colum` | Entrada existente en la BD                                         | `not_unique:city,id`  |

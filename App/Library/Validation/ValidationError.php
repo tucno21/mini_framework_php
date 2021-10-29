@@ -36,7 +36,7 @@ class ValidationError
         'datetime'          => 'El campo %s debe ser una fecha y hora valido',
         'time'              => 'El campo %s debe ser una hora valido',
         'date'              => 'El campo %s debe ser una fecha valido',
-        'matches'              => 'El campo %s no coincide',
+        'matches'              => 'El campo %s no coincide con (%s)',
         'unique'              => 'El %s ya existe.',
         'not_unique'              => 'El %s no existe en la BD.',
         // 'file'              => 'El campo %s debe ser un archivo valido',
