@@ -23,10 +23,8 @@ class HomeController extends Controller
 
     public function register()
     {
-        // d($_POST);
-        // d(array_merge($_POST, $_FILES));
 
-        // $data = $this->request()->isPost();
+        $data = $this->request()->isPost();
 
         $validator = $this->validate($data, [
             'name' => 'required|alpha',

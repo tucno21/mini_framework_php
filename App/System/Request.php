@@ -30,6 +30,11 @@ class Request
                 $data[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
+
+        if (!empty($_FILES)) {
+            $data = array_merge($data, $_FILES);
+        }
+
         return $data;
     }
 
@@ -41,6 +46,11 @@ class Request
                 $data[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
+
+        if (!empty($_FILES)) {
+            $data = array_merge($data, $_FILES);
+        }
+
         return $data;
     }
 }
