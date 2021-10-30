@@ -233,6 +233,12 @@ d($validator);
 | `matches:2input`         | Compara la igualdad de dos entradas                                | `matches:co_password` |
 | `unique:model,colum`     | Entrada unica que no coincida con la BD                            | `unique:users,email`  |
 | `not_unique:model,colum` | Entrada existente en la BD                                         | `not_unique:city,id`  |
+| ------------------------ | ------------------------------------------------------------------ | --------------------- |
+| Regla Archivos-file      | Descripción                                                        | Ejemplo               |
+| ------------------------ | ------------------------------------------------------------------ | --------------------- |
+| `requiredImg`            | Entrada no vacio, es obligatorio.                                  |                       |
+| `maxSize:number`         | Tamaño maximo del archivo en MB.                                   | `maxSize:2`           |
+| `type:param`             | Tipos de archivos permitidos (jpeg,png,zip,gif).                   | `type:jpeg,png`       |
 
 ## Creditos
 

@@ -34,7 +34,7 @@ class HomeController extends Controller
             'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
             'password_confirm' => 'required',
-            'photo' => 'requiredImg|maxSize:2|type:jpeg,png',
+            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip',
         ]);
         d($validator);
         if ($validator !== true) {
