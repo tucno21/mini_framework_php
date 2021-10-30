@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         if ($valid !== true) {
 
-            return $this->redirect('login', [
+            return $this->view('login', [
                 'err' =>  $valid,
                 'data' => (object)$data,
             ]);
@@ -48,7 +48,7 @@ class HomeController extends Controller
             // $user = $this->homeModel->where('email', $data['email'])->first();
             // $homeModel = new HomeModel();
             // $homeModel->create($data);
-            return $this->redirect('home');
+            return $this->redirect('/');
         }
 
         // d($_SESSION);
@@ -72,7 +72,7 @@ class HomeController extends Controller
 
         if ($validator !== true) {
 
-            return $this->redirect('register', [
+            return $this->view('register', [
                 'err' =>  $validator,
                 'data' => (object)$data,
             ]);
@@ -89,6 +89,6 @@ class HomeController extends Controller
     {
         session_start();
         session_destroy();
-        return $this->redirect('login');
+        return $this->redirect('/');
     }
 }

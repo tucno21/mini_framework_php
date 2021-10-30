@@ -13,9 +13,13 @@ class Controller
         return Router::$routerApp->renderView($view, $data);
     }
 
-    public function redirect($view, $data = [])
+    public function redirect($url)
     {
-        return Router::$routerApp->renderView($view, $data);
+        if ($url == '/') {
+            header("Location: $url");
+        } else {
+            header("Location: /$url");
+        }
     }
 
     public function request()
