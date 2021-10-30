@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="<?= base_url('/register') ?>" enctype="multipart/form-data">
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Apellidos y Nombres</label>
             <input type="text" class="form-control <?= isset($err->name) ? 'is-invalid' : '' ?>" name="name" value="<?= isset($data->name) ? $data->name : '' ?>" />
@@ -49,16 +49,6 @@
             <?php if (isset($err->password_confirm)) : ?>
                 <div class="invalid-feedback">
                     <?= $err->password_confirm ?>
-                </div>
-            <?php endif; ?>
-        </div>
-
-        <div class="mb-3 form-group has-validation">
-            <label class="form-label">Agregar imagen</label>
-            <input type="file" class="form-control <?= isset($err->photo) ? 'is-invalid' : '' ?>" name="photo" />
-            <?php if (isset($err->photo)) : ?>
-                <div class="invalid-feedback">
-                    <?= $err->photo ?>
                 </div>
             <?php endif; ?>
         </div>

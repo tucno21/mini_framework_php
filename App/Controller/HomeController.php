@@ -16,9 +16,31 @@ class HomeController extends Controller
 
     public function login()
     {
+        $data = $this->request()->isPost();
+
+        $valid = $this->validate($data, [
+            'email' => 'required|email|not_unique:HomeModel,email',
+            'password' => 'required',
+        ]);
+
+        if ($valid !== true) {
+
+            return $this->redirect('login', [
+                'err' =>  $valid,
+                'data' => (object)$data,
+            ]);
+        } else {
+
+            // $homeModel = new HomeModel();
+            // $homeModel->create($data);
+            // return $this->redirect('login');
+            echo 'iniciaste sesion';
+            d($valid);
+        }
+
         // return redirect('home');
-        return $this->redirect('home');
-        // return view('login');
+        // return $this->redirect('home');
+        return view('login');
     }
 
     public function register()
@@ -32,7 +54,6 @@ class HomeController extends Controller
             'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
             'password_confirm' => 'required',
-            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip,svg+xml',
         ]);
 
         if ($validator !== true) {
