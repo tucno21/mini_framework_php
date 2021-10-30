@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $valid = $this->validate($data, [
             'email' => 'required|email|not_unique:HomeModel,email',
-            'password' => 'required',
+            'password' => 'required|password_verify:HomeModel,email',
         ]);
 
         if ($valid !== true) {

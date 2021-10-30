@@ -44,6 +44,7 @@ class ValidationError
         'maxSize'              => 'El archivo %s a sobrepasado %d MB.',
         'type'              => 'El campo %s tiene un archivo no valido (%s)',
         // 'file'              => 'El campo %s debe ser un archivo valido',
+        'password_verify'    => 'Error la contraseña no coincide',
 
     ];
 

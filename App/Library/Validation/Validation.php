@@ -396,6 +396,28 @@ class Validation
         }
     }
 
+    public static function validatePassword_verify(string $ruleKey, string $rule, $params)
+    {
+        $value = self::getValue($ruleKey);
+
+        if ($value !== '') {
+            if (count($params) === 2) {
+                $colum = $params[1];
+                $model = $params[0];
+                $email = self::getValue($params[1]);
+
+                $class = "App\Model\\" . $model;
+                $instance = new $class();
+                $result = $instance->where($colum, $email)->findAll();
+                if (!empty($result)) {
+                    if (!password_verify($value, $result[0]->$ruleKey)) {
+                        self::addError($ruleKey, $rule);
+                    }
+                }
+            }
+        }
+    }
+
 
     public static function validateRequiredImg(string $ruleKey, string $rule)
     {
