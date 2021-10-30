@@ -39,7 +39,7 @@ class HomeController extends Controller
 
             return $this->redirect('register', [
                 'err' =>  $validator,
-                'data' => $data,
+                'data' => (object)$data,
             ]);
         } else {
             $homeModel = new HomeModel();

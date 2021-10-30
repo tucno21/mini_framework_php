@@ -5,7 +5,7 @@
     <form method="POST" action="" enctype="multipart/form-data">
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Apellidos y Nombres</label>
-            <input type="text" class="form-control <?= isset($err->name) ? 'is-invalid' : '' ?>" name="name" value="<?= isset($data["name"]) ? $data["name"] : '' ?>" />
+            <input type="text" class="form-control <?= isset($err->name) ? 'is-invalid' : '' ?>" name="name" value="<?= isset($data->name) ? $data->name : '' ?>" />
             <?php if (isset($err->name)) : ?>
                 <div class="invalid-feedback">
                     <?= $err->name ?>
@@ -15,7 +15,7 @@
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Usuario</label>
-            <input type="text" class="form-control <?= isset($err->username) ? 'is-invalid' : '' ?>" name="username" value="<?= isset($data["username"]) ? $data["username"] : '' ?>" />
+            <input type="text" class="form-control <?= isset($err->username) ? 'is-invalid' : '' ?>" name="username" value="<?= isset($data->username) ? $data->username : '' ?>" />
             <?php if (isset($err->username)) : ?>
                 <div class="invalid-feedback">
                     <?= $err->username ?>
@@ -25,7 +25,7 @@
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Email</label>
-            <input type="text" class="form-control <?= isset($err->email) ? 'is-invalid' : '' ?>" name="email" value="<?= isset($data["email"]) ? $data["email"] : '' ?>" />
+            <input type="text" class="form-control <?= isset($err->email) ? 'is-invalid' : '' ?>" name="email" value="<?= isset($data->email) ? $data->email : '' ?>" />
             <?php if (isset($err->email)) : ?>
                 <div class="invalid-feedback">
                     <?= $err->email ?>
