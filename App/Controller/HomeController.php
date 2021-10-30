@@ -36,7 +36,7 @@ class HomeController extends Controller
         if ($validator !== true) {
 
             return $this->redirect('register', [
-                'error' =>  $validator,
+                'err' =>  $validator,
                 'data' => $data,
             ]);
         } else {

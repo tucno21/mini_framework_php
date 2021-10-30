@@ -5,50 +5,50 @@
     <form method="POST" action="">
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Apellidos y Nombres</label>
-            <input type="text" class="form-control <?= isset($error["name"]) ? 'is-invalid' : '' ?>" name="name" value="<?= isset($data["name"]) ? $data["name"] : '' ?>" />
-            <?php if (isset($error["name"])) : ?>
+            <input type="text" class="form-control <?= isset($err->name) ? 'is-invalid' : '' ?>" name="name" value="<?= isset($data["name"]) ? $data["name"] : '' ?>" />
+            <?php if (isset($err->name)) : ?>
                 <div class="invalid-feedback">
-                    <?= $error["name"] ?>
+                    <?= $err->name ?>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Usuario</label>
-            <input type="text" class="form-control <?= isset($error["username"]) ? 'is-invalid' : '' ?>" name="username" value="<?= isset($data["username"]) ? $data["username"] : '' ?>" />
-            <?php if (isset($error["username"])) : ?>
+            <input type="text" class="form-control <?= isset($err->username) ? 'is-invalid' : '' ?>" name="username" value="<?= isset($data["username"]) ? $data["username"] : '' ?>" />
+            <?php if (isset($err->username)) : ?>
                 <div class="invalid-feedback">
-                    <?= $error["username"] ?>
+                    <?= $err->username ?>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Email</label>
-            <input type="text" class="form-control <?= isset($error["email"]) ? 'is-invalid' : '' ?>" name="email" value="<?= isset($data["email"]) ? $data["email"] : '' ?>" />
-            <?php if (isset($error["email"])) : ?>
+            <input type="text" class="form-control <?= isset($err->email) ? 'is-invalid' : '' ?>" name="email" value="<?= isset($data["email"]) ? $data["email"] : '' ?>" />
+            <?php if (isset($err->email)) : ?>
                 <div class="invalid-feedback">
-                    <?= $error["email"] ?>
+                    <?= $err->email ?>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Contraseña</label>
-            <input type="password" class="form-control <?= isset($error["password"]) ? 'is-invalid' : '' ?>" name="password" value="" />
-            <?php if (isset($error["password"])) : ?>
+            <input type="password" class="form-control <?= isset($err->password) ? 'is-invalid' : '' ?>" name="password" value="" />
+            <?php if (isset($err->password)) : ?>
                 <div class="invalid-feedback">
-                    <?= $error["password"] ?>
+                    <?= $err->password ?>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="mb-3 form-group has-validation">
             <label class="form-label">Confirmar contraseña</label>
-            <input type="password" class="form-control <?= isset($error["password_confirm"]) ? 'is-invalid' : '' ?>" name="password_confirm" value="" />
-            <?php if (isset($error["password_confirm"])) : ?>
+            <input type="password" class="form-control <?= isset($err->password_confirm) ? 'is-invalid' : '' ?>" name="password_confirm" value="" />
+            <?php if (isset($err->password_confirm)) : ?>
                 <div class="invalid-feedback">
-                    <?= $error["password_confirm"] ?>
+                    <?= $err->password_confirm ?>
                 </div>
             <?php endif; ?>
         </div>

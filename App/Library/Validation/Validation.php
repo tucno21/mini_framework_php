@@ -21,7 +21,8 @@ class Validation
             if (count(self::$errors) === 0) {
                 return true;
             } else {
-                return self::$errors;
+                $error = json_decode(json_encode(self::$errors));
+                return  $error;
             }
         }
         // return 'error';
