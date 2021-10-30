@@ -39,6 +39,10 @@ class ValidationError
         'matches'              => 'El campo %s no coincide con (%s)',
         'unique'              => 'El %s ya existe.',
         'not_unique'              => 'El %s no existe en la BD.',
+
+        'requiredImg'              => 'El archivo %s es obligatorio.',
+        'maxSize'              => 'El archivo %s a sobrepasado %d MB.',
+        'type'              => 'El campo %s tiene un archivo no valido (%s)',
         // 'file'              => 'El campo %s debe ser un archivo valido',
 
     ];

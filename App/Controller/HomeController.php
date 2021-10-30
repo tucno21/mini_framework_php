@@ -23,16 +23,20 @@ class HomeController extends Controller
 
     public function register()
     {
-        $data = $this->request()->isPost();
+        // d($_POST);
+        // d(array_merge($_POST, $_FILES));
 
-        $validator = $this->validate($data, [
+        // $data = $this->request()->isPost();
+
+        $validator = $this->validate(array_merge($_POST, $_FILES), [
             'name' => 'required|alpha',
             'username' => 'required|alpha_numeric',
             'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
             'password_confirm' => 'required',
+            'photo' => 'requiredImg|maxSize:2|type:jpeg,png',
         ]);
-
+        d($validator);
         if ($validator !== true) {
 
             return $this->redirect('register', [

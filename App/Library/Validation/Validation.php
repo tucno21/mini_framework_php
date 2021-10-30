@@ -184,7 +184,6 @@ class Validation
     public static function validateRequired(string $ruleKey, string $rule)
     {
         $value = self::getValue($ruleKey);
-
         if (empty($value) || is_null($value)) {
             self::addError($ruleKey, $rule);
         }
@@ -393,6 +392,48 @@ class Validation
                 if (empty($result)) {
                     self::addError($ruleKey, $rule);
                 }
+            }
+        }
+    }
+
+
+    public static function validateRequiredImg(string $ruleKey, string $rule)
+    {
+        $value = self::getValue($ruleKey);
+
+        if (empty($value['name']) || is_null($value['name'])) {
+            self::addError($ruleKey, $rule);
+        }
+    }
+
+
+    public static function validateMaxSize(string $ruleKey, string $rule, $params)
+    {
+        $value = self::getValue($ruleKey);
+
+        if (count($params) === 1) {
+            $max = (int)max($params) * 1048576;
+
+            if (!is_null($max) && $value["size"] > $max) {
+                self::addError($ruleKey, 'maxSize', [(int)max($params)]);
+            }
+        } else {
+            throw new \Exception("The max rule take only one parameter");
+        }
+    }
+
+
+    public static function validateType(string $ruleKey, string $rule, $params)
+    {
+        $value = self::getValue($ruleKey);
+        $fileType = $value["type"];
+
+        if ($fileType !== '') {
+            $type = explode('/', $fileType);
+
+            if (array_search($type[1], $params) === false) {
+
+                self::addError($ruleKey, 'type', [$value["name"]]);
             }
         }
     }
