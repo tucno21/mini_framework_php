@@ -7,6 +7,13 @@ use App\System\Controller;
 
 class HomeController extends Controller
 {
+    protected $homeModel;
+
+    public function __construct()
+    {
+        $this->homeModel = new HomeModel();
+    }
+
     public function home()
     {
         return view('home', [
@@ -31,11 +38,12 @@ class HomeController extends Controller
             ]);
         } else {
 
+            $user = $this->homeModel->where('email', $data['email'])->first();
             // $homeModel = new HomeModel();
             // $homeModel->create($data);
             // return $this->redirect('login');
             echo 'iniciaste sesion';
-            d($valid);
+            d($user);
         }
 
         // return redirect('home');
@@ -63,8 +71,8 @@ class HomeController extends Controller
                 'data' => (object)$data,
             ]);
         } else {
-            $homeModel = new HomeModel();
-            $homeModel->create($data);
+
+            $this->homeModel->create($data);
             return $this->redirect('login');
         }
 
