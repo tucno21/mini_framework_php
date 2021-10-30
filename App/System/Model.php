@@ -219,7 +219,7 @@ class Model
     private function readDB($query)
     {
         $stmt = self::$db->query($query);
-        self::$db->close();
+        // self::$db->close();
 
         $array = [];
         while ($object = $stmt->fetch_object()) {
