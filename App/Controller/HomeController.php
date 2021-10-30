@@ -38,14 +38,20 @@ class HomeController extends Controller
             ]);
         } else {
 
-            $user = $this->homeModel->where('email', $data['email'])->first();
+            // start a session
+            session_start();
+            $_SESSION['user'] = 'carlos';
+            $_SESSION['login'] = 'ok';
+
+            // $this->sesion('succes', 'gracias por todo');
+
+            // $user = $this->homeModel->where('email', $data['email'])->first();
             // $homeModel = new HomeModel();
             // $homeModel->create($data);
-            // return $this->redirect('login');
-            echo 'iniciaste sesion';
-            d($user);
+            return $this->redirect('home');
         }
 
+        // d($_SESSION);
         // return redirect('home');
         // return $this->redirect('home');
         return view('login');
@@ -77,5 +83,12 @@ class HomeController extends Controller
         }
 
         return view('register');
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        return $this->redirect('login');
     }
 }

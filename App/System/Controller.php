@@ -3,6 +3,7 @@
 namespace App\System;
 
 use App\System\Router;
+use App\System\Session;
 use App\Library\Validation\Validation;
 
 class Controller
@@ -28,8 +29,10 @@ class Controller
         // return $mm->validate($inputs, $rules);
         return $mm->validate($inputs, $rules);
     }
-    // public function validate($inputs, $rules)
+
+    // public function sesion($key, $message)
     // {
-    //     return Validation::validation($inputs, $rules);
+    //     $sesion = new Session();
+    //     return $sesion->setFlash($key, $message);
     // }
 }

@@ -1,3 +1,6 @@
+<?php if (!isset($_SESSION)) {
+    session_start();
+} ?>
 <!doctype html>
 <html lang="en">
 
@@ -24,12 +27,19 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('/login') ?>">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('/register') ?>">Registrarse</a>
-                    </li>
+                    <?php if (empty($_SESSION)) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('/login') ?>">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('/register') ?>">Registrarse</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('/logout') ?>">Cerra sesión</a>
+                        </li>
+                    <?php endif; ?>
+
                 </ul>
 
             </div>
