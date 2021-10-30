@@ -26,18 +26,24 @@ class HomeController extends Controller
         $data = $this->request()->isPost();
 
         $validator = $this->validate($data, [
-            'name' => 'required|choice:loco',
-            'email' => 'required|email|not_unique:HomeModel,email',
+            'name' => 'required|alpha',
+            'username' => 'required|alpha_numeric',
+            'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
+            'password_confirm' => 'required',
         ]);
 
+        if ($validator !== true) {
 
-
-        // $homeModel = new HomeModel();
-
-        // $db = $homeModel->where('email', 'carlitostucno@gmail.com')->findAll();
-
-        d($validator);
+            return $this->redirect('register', [
+                'error' =>  $validator,
+                'data' => $data,
+            ]);
+        } else {
+            $homeModel = new HomeModel();
+            $homeModel->create($data);
+            return $this->redirect('login');
+        }
 
         return view('register');
     }

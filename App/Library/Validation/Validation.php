@@ -10,18 +10,24 @@ class Validation
     private static $customMessages = [];
 
 
-    public static function validate(array $inputs, array $rules)
+    public function validate(array $inputs, array $rules)
     {
         self::$rules = $rules;
         self::$inputs = $inputs;
 
         if (!empty($inputs)) {
-            self::callRules();
+            $this->callRules();
+
+            if (count(self::$errors) === 0) {
+                return true;
+            } else {
+                return self::$errors;
+            }
         }
-        d(self::$errors);
+        // return 'error';
     }
 
-    private static function callRules()
+    private function callRules()
     {
         // $pattern = '[\p{L}]+';
         // $regex = '/^(' . $pattern . ')$/u';

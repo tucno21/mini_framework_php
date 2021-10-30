@@ -24,9 +24,9 @@ class Controller
 
     public function validate($inputs, $rules)
     {
-        // $mm = new Validation;
+        $mm = new Validation;
         // return $mm->validate($inputs, $rules);
-        return Validation::validate($inputs, $rules);
+        return $mm->validate($inputs, $rules);
     }
     // public function validate($inputs, $rules)
     // {
