@@ -28,15 +28,15 @@ class HomeController extends Controller
 
         // $data = $this->request()->isPost();
 
-        $validator = $this->validate(array_merge($_POST, $_FILES), [
+        $validator = $this->validate($data, [
             'name' => 'required|alpha',
             'username' => 'required|alpha_numeric',
             'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
             'password_confirm' => 'required',
-            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip',
+            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip,svg+xml',
         ]);
-        d($validator);
+
         if ($validator !== true) {
 
             return $this->redirect('register', [

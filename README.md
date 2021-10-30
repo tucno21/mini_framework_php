@@ -195,13 +195,30 @@ queryFirst('SELECT * FROM users');
 desde el controlador y enviar datos
 
 ```php
-$validator = $this->validate($data, [
-    'name' => 'required|choice:loco',
-    'email' => 'required|email|unique:HomeModel,email',
-    'password' => 'required|min:3|max:12|matches:password_confirm',
-    ]);
+        $data = $this->request()->isPost();
 
-d($validator);
+        $validator = $this->validate($data, [
+            'name' => 'required|alpha',
+            'username' => 'required|alpha_numeric',
+            'email' => 'required|email|unique:HomeModel,email',
+            'password' => 'required|min:3|max:12|matches:password_confirm',
+            'password_confirm' => 'required',
+            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip,svg+xml',
+        ]);
+
+        if ($validator !== true) {
+
+            return $this->redirect('register', [
+                'err' =>  $validator,
+                'data' => $data,
+            ]);
+        } else {
+            $homeModel = new HomeModel();
+            $homeModel->create($data);
+            return $this->redirect('login');
+        }
+
+        return view('register');
 ```
 
 | Regla                    | Descripción                                                        | Ejemplo               |
@@ -233,12 +250,14 @@ d($validator);
 | `matches:2input`         | Compara la igualdad de dos entradas                                | `matches:co_password` |
 | `unique:model,colum`     | Entrada unica que no coincida con la BD                            | `unique:users,email`  |
 | `not_unique:model,colum` | Entrada existente en la BD                                         | `not_unique:city,id`  |
-| ------------------------ | ------------------------------------------------------------------ | --------------------- |
-| Regla Archivos-file      | Descripción                                                        | Ejemplo               |
-| ------------------------ | ------------------------------------------------------------------ | --------------------- |
-| `requiredImg`            | Entrada no vacio, es obligatorio.                                  |                       |
-| `maxSize:number`         | Tamaño maximo del archivo en MB.                                   | `maxSize:2`           |
-| `type:param`             | Tipos de archivos permitidos (jpeg,png,zip,gif).                   | `type:jpeg,png`       |
+
+##
+
+| Regla Archivos-file | Descripción                                              | Ejemplo         |
+| ------------------- | -------------------------------------------------------- | --------------- |
+| `requiredImg`       | Entrada no vacio, es obligatorio.                        |                 |
+| `maxSize:number`    | Tamaño maximo del archivo en MB.                         | `maxSize:2`     |
+| `type:param`        | Tipos de archivos permitidos (jpeg,png,zip,gif,svg+xml). | `type:jpeg,png` |
 
 ## Creditos
 
