@@ -76,6 +76,14 @@ class HomeController extends Controller
         return view('register');
     }
 
+    public function dashboard()
+    {
+        $users = $this->homeModel->findAll();
+        return view('dashboard', [
+            'users' => $users,
+        ]);
+    }
+
     public function logout()
     {
         // session_start();
