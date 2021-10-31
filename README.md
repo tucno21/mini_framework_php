@@ -190,6 +190,27 @@ find('a@a.com', 'email');
 queryFirst('SELECT * FROM users');
 ```
 
+## SESSIONES
+
+Crear sesiones desde el CONTROLADOR en el session
+-enviar una clave 'ejemplo' y un arrar o datos(array / objeto) para crear $\_SESSION
+
+```php
+$this->sessionSet('user', $user);
+```
+
+invocar la sesion (con la clave creada)
+
+```php
+$session = $this->sessionGet('user');
+```
+
+Eliminar la sesion (enviar la clave creada)
+
+```php
+$this->sessionDestroy('user');
+```
+
 ## Validaciones de Inputs
 
 desde el controlador y enviar datos
