@@ -293,13 +293,21 @@ desde el controlador y enviar datos
 | `maxSize:number`    | Tamaño maximo del archivo en MB.                         | `maxSize:2`     |
 | `type:param`        | Tipos de archivos permitidos (jpeg,png,zip,gif,svg+xml). | `type:jpeg,png` |
 
-## Creditos
+## Creditos 📌
 
-modificacion para la validacion del formulario de:
+_Modelo de framework php_
 
-https://github.com/mkakpabla/form-validation-php#readme
-https://github.com/booomerang/Validatr/tree/master/src
+- [Juan de la Torre](https://www.udemy.com/course/desarrollo-web-completo-con-html5-css3-js-php-y-mysql/) - Curso PHP.
+- [The Codeholic](https://www.youtube.com/playlist?list=PLLQuc_7jk__Uk_QnJMPndbdKECcTEwTA1) - Framework php.
 
-inspirado en:
-https://codeigniter.com/user_guide/libraries/validation.html
-https://laravel.com/docs/8.x/validation
+_Modificacion para la validacion del formulario de_
+
+- [mkakpabla](https://github.com/mkakpabla/form-validation-php#readme) - Validacion Adaptado.
+- [booomerang](https://github.com/booomerang/Validatr/tree/master/src) - Validacion php.
+
+_inspirado en:_
+
+- [codeigniter](https://codeigniter.com/user_guide/libraries/validation.html) - formato y uso de validaciones.
+- [laravel](https://laravel.com/docs/8.x/validation) - estilo de las validaciones.
+
+_Y A TODO LOS DEV DE YOUTUBE_
