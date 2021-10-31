@@ -214,8 +214,8 @@ $this->sessionDestroy('user');
 ## ACCESO A RUTAS (Middleware)
 
 Agregar en el Controlador
-_enviar la sesion con clave creada_
-_enviar arrary de rutas no permitidas sin iniciar login_
+(_enviar la sesion con clave creada_),
+(_enviar arrary de rutas no permitidas sin iniciar login_)
 
 ```php
     public function __construct()
