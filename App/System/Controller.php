@@ -42,7 +42,7 @@ class Controller
         return $sesion;
     }
 
-    public function sessionSet(string $key, array $data)
+    public function sessionSet(string $key, object $data)
     {
         return $this->session()->set($key, $data);
     }
