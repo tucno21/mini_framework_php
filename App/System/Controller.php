@@ -34,9 +34,26 @@ class Controller
         return $mm->validate($inputs, $rules);
     }
 
-    // public function sesion($key, $message)
-    // {
-    //     $sesion = new Session();
-    //     return $sesion->setFlash($key, $message);
-    // }
+    /**conección de session **/
+
+    public function session()
+    {
+        $sesion = new Session();
+        return $sesion;
+    }
+
+    public function sessionSet($key, $data)
+    {
+        return $this->session()->set($key, $data);
+    }
+
+    public function sessionGet($key)
+    {
+        return $this->session()->get($key);
+    }
+
+    public function sessionDestroy($key)
+    {
+        return $this->session()->remove($key);
+    }
 }
