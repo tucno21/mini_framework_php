@@ -56,4 +56,10 @@ class Controller
     {
         return $this->session()->remove($key);
     }
+
+    public function middleware($session, array $middleware)
+    {
+        $mw = new Middleware();
+        $mw->run($session, $middleware);
+    }
 }

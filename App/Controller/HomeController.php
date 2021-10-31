@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->homeModel = new HomeModel();
+        $this->middleware($this->sessionGet('user'), ['/dashboard']);
     }
 
     public function home()
@@ -78,16 +79,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $session = $this->sessionGet('user');
-
-        if ($session) {
-            $users = $this->homeModel->findAll();
-            return view('dashboard', [
-                'users' => $users,
-            ]);
-        } else {
-            return $this->redirect('login');
-        }
+        $users = $this->homeModel->findAll();
+        return view('dashboard', [
+            'users' => $users,
+        ]);
     }
 
     public function logout()
