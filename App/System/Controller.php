@@ -42,17 +42,17 @@ class Controller
         return $sesion;
     }
 
-    public function sessionSet($key, $data)
+    public function sessionSet(string $key, array $data)
     {
         return $this->session()->set($key, $data);
     }
 
-    public function sessionGet($key)
+    public function sessionGet(string $key)
     {
         return $this->session()->get($key);
     }
 
-    public function sessionDestroy($key)
+    public function sessionDestroy(string  $key)
     {
         return $this->session()->remove($key);
     }
