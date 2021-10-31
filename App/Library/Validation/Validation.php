@@ -419,7 +419,7 @@ class Validation
     }
 
 
-    public static function validateRequiredImg(string $ruleKey, string $rule)
+    public static function validateRequiredFile(string $ruleKey, string $rule)
     {
         $value = self::getValue($ruleKey);
 

@@ -289,7 +289,7 @@ desde el controlador y enviar datos
 
 | Regla Archivos-file | Descripción                                              | Ejemplo         |
 | ------------------- | -------------------------------------------------------- | --------------- |
-| `requiredImg`       | Entrada no vacio, es obligatorio.                        |                 |
+| `requiredFile`      | Entrada no vacio, es obligatorio.                        |                 |
 | `maxSize:number`    | Tamaño maximo del archivo en MB.                         | `maxSize:2`     |
 | `type:param`        | Tipos de archivos permitidos (jpeg,png,zip,gif,svg+xml). | `type:jpeg,png` |
 
