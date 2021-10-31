@@ -211,6 +211,19 @@ Eliminar la sesion (enviar la clave creada)
 $this->sessionDestroy('user');
 ```
 
+## ACCESO A RUTAS (Middleware)
+
+Agregar en el Controlador
+_enviar la sesion con clave creada_
+_enviar arrary de rutas no permitidas sin iniciar login_
+
+```php
+    public function __construct()
+    {
+        $this->middleware($this->sessionGet('user'), ['/dashboard']);
+    }
+```
+
 ## Validaciones de Inputs
 
 desde el controlador y enviar datos
