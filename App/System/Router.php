@@ -3,6 +3,8 @@
 namespace App\System;
 
 use App\System\Request;
+use App\System\ResponseHTTP;
+
 
 class Router
 {
@@ -10,12 +12,14 @@ class Router
     public array $postRoutes = [];
     public Request $request;
     public static Router $routerApp;
+    public ResponseHTTP $responseHTTP;
 
 
     public function __construct()
     {
         self::$routerApp = $this;
         $this->request = new Request();
+        $this->responseHTTP = new ResponseHTTP();
     }
 
 
@@ -38,7 +42,8 @@ class Router
 
         //cuando los parametros no existe en el router error 404
         if ($callback == null) {
-            echo 'la pagina no existe';
+            $this->responseHTTP->setStatusCode(404);
+            echo $this->renderView('layout/404');
         }
 
         //Comprueba si una variable es de tipo string
