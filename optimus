@@ -1,0 +1,88 @@
+<?php
+
+if (strpos(PHP_SAPI, 'cgi') === 0) {
+    exit("La herramienta cli no es compatible cuando se ejecuta php-cgi. ¡Necesita php-cli para funcionar!\n\n");
+}
+
+$dirController = __DIR__ . '/App/Controller/';
+$dirModel = __DIR__ . '/App/Model/';
+$Layout = __DIR__ . '/App/System/Layout/';
+
+error_reporting(-1);
+ini_set('display_errors', '1');
+
+$console = $_SERVER['argv'];
+
+if ($console[0] == 'optimus') {
+    if ($console[1] == 'make:controller') {
+
+        $baseController = $Layout . "conAA.txt";
+        $nameController = ucfirst($console[2]);
+        $newController = $dirController . $nameController . '.php';
+
+        if (isset($console[3])) {
+            $baseController = $Layout . "conBB.txt";
+            $newController = $dirController . $console[3] . '/' . $nameController . '.php';
+
+            if (file_exists($newController)) {
+                echo "El archivo $nameController.php ya existe";
+            } else {
+                if (!is_dir($dirController . ucfirst($console[3]))) {
+                    mkdir($dirController . ucfirst($console[3]));
+                }
+
+                $buscar = ['CAMBIONAME', 'CAMBIODIR'];
+                $cambiar = [$nameController, ucfirst($console[3])];
+
+                file_put_contents($newController, str_replace($buscar, $cambiar, file_get_contents($baseController)));
+
+                echo 'se ha creado con exito';
+            }
+        } else {
+            if (file_exists($newController)) {
+                echo "El archivo $nameController.php ya existe";
+            } else {
+                file_put_contents($newController, str_replace('CAMBIO', $nameController, file_get_contents($baseController)));
+
+                echo 'se ha creado con exito';
+            }
+        }
+    } else if ($console[1] == 'make:model') {
+
+        $baseModel = $Layout . "moAA.txt";
+        $nameModel = ucfirst($console[2]);
+        $newModel = $dirModel . $nameModel . '.php';
+
+        if (isset($console[3])) {
+            $baseModel = $Layout . "moBB.txt";
+            $newModel = $dirModel . $console[3] . '/' . $nameModel . '.php';
+
+            if (file_exists($newModel)) {
+                echo "El archivo $nameModel.php ya existe";
+            } else {
+                if (!is_dir($dirModel . ucfirst($console[3]))) {
+                    mkdir($dirModel . ucfirst($console[3]));
+                }
+
+                $buscar = ['CAMBIONAME', 'CAMBIODIR'];
+                $cambiar = [$nameModel, ucfirst($console[3])];
+
+                file_put_contents($newModel, str_replace($buscar, $cambiar, file_get_contents($baseModel)));
+
+                echo 'se ha creado con exito';
+            }
+        } else {
+
+            if (file_exists($newModel)) {
+                echo "El archivo $nameModel.php ya existe";
+            } else {
+                file_put_contents($newModel, str_replace('CAMBIO', $nameModel, file_get_contents($baseModel)));
+
+                echo 'se ha creado con exito';
+            }
+        }
+    } else {
+        echo 'error de comando';
+        echo date('Y-m-d H:i:s');
+    }
+}
