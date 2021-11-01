@@ -79,6 +79,22 @@ captura la parte del HTML
 <?= extend('/layout/head.php') ?>
 ```
 
+## CREAR CONTROLADOR Y MODELO DESDE CONSOLA
+
+Para controlador y modelo sin carpeta
+
+```
+php optimus make:controller Name
+php optimus make:model Name
+```
+
+Para controlador y modelo con carpeta
+
+```
+php optimus make:controller Name folderName
+php optimus make:model Name folderName
+```
+
 ## FUNCIONES CONTROLADOR
 
 enviar vistas usando $this
