@@ -132,6 +132,7 @@ class Model
     //LEER TODO TABLA
     public function findAll($limit = null)
     {
+        $limit = self::$db->escape_string($limit);
         if ($limit != null) {
             if (self::$columns != null) {
                 $query = "SELECT " . self::$columns . " FROM " . static::$table . self::$where . self::$orderBy . " LIMIT $limit";
@@ -166,6 +167,10 @@ class Model
 
     public function where($colum, $operator = null, $valueColum = null)
     {
+        $colum = self::$db->escape_string($colum);
+        $operator = self::$db->escape_string($operator);
+        $valueColum = self::$db->escape_string($valueColum);
+
         if ($operator != null && $valueColum != null) {
             self::$where = " WHERE $colum $operator '$valueColum'";
         } else {
@@ -177,12 +182,17 @@ class Model
 
     public function columns($columns)
     {
+        $columns = self::$db->escape_string($columns);
+
         self::$columns = $columns;
         return $this;
     }
 
     public function orderBy($colum, $order)
     {
+        $colum = self::$db->escape_string($colum);
+        $order = self::$db->escape_string($order);
+
         self::$orderBy = " ORDER BY $colum " . strtoupper($order);
         return $this;
     }
@@ -190,6 +200,8 @@ class Model
     //BUSCAR UNA FILA POR SU ID
     public function find($id, $colum = null)
     {
+        $colum = self::$db->escape_string($colum);
+
         if ($colum != null) {
             $query = "SELECT * FROM " . static::$table . " WHERE $colum = '$id'";
         } else {
@@ -205,6 +217,8 @@ class Model
     //RECIVE UN QUERY Y ENVIA GRUPOS DE OBJETOS
     public function queryAll($query)
     {
+        $query = self::$db->escape_string($query);
+
         $result = $this->readDB($query);
         return $result;
     }
@@ -212,6 +226,8 @@ class Model
     //RECIVE UN QUERY Y ENVIA UN OBJETO
     public function queryFirst($query)
     {
+        $query = self::$db->escape_string($query);
+
         $result = $this->readDB($query);
         return $result[0];
     }
