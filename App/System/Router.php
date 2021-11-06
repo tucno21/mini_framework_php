@@ -86,7 +86,7 @@ class Router
     public function renderView($view, $data = [])
     {
         $content = $this->renderOnlyView($view, $data);
-        include_once APPDIR . '/View/index.php';
+        include_once APPDIR . '/View/renderView.php';
     }
 
     //captura el contenido para el layaut
