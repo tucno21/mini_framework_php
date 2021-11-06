@@ -30,6 +30,8 @@ $localhost = 'localhost';
 $user = 'root';
 $password = 'root';
 $dbName = 'mvc_framework';
+
+$imageFolder = 'img'; //nombre de la carpeta de almacenamiento de imagenes
 ```
 
 ## RUTAS WEB
@@ -66,8 +68,9 @@ Ruta Web principal
 Ruta sistema
 
 ```php
-DIRPUBLIC  //carpeta pública
+DIRPUBLIC  //carpeta /public
 APPDIR     //carpeta App
+DIRIMG     //carpeta /public/$imageFolder/ para almacenar imagenes
 ```
 
 ## FUNCIONES PARA EL VISTA
@@ -229,7 +232,7 @@ $this->sessionDestroy('user');
 
 ## ACCESO A RUTAS (Middleware)
 
-Agregar en el Controlador
+Agregar en el Controlador que se será restingido
 (_enviar la sesion con clave creada_),
 (_enviar arrary de rutas no permitidas sin iniciar login_)
 
