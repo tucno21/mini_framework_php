@@ -32,6 +32,9 @@ function base_url($parameters = null)
 //ruta de documento public
 define('DIRPUBLIC', $_SERVER['DOCUMENT_ROOT']);
 
+//ruta de documento public/imagens
+define('DIRIMG', $_SERVER['DOCUMENT_ROOT'] . "/$imageFolder/");
+
 //ruta padre de este archivo
 define('APPDIR', dirname(__DIR__));
 

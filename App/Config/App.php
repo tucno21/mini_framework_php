@@ -8,3 +8,7 @@ $localhost = 'localhost';
 $user = 'root';
 $password = 'root';
 $dbName = 'mvc_framework';
+
+
+//nombre de la carpeta para almacenar imagenes
+$imageFolder = 'img';
