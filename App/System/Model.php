@@ -105,7 +105,9 @@ class Model
         $stmt = self::$db->query($query);
 
         if (self::$db->affected_rows > 0) {
-            return "ok";
+            return [
+                'result' =>  'ok',
+            ];
         } else {
             return "error";
         }
@@ -123,7 +125,9 @@ class Model
         // dd($stmt);
         // if ($stmt) {
         if (self::$db->affected_rows > 0) {
-            return "ok";
+            return [
+                'result' =>  'ok',
+            ];
         } else {
             return "error";
         }
