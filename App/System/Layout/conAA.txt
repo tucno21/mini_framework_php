@@ -20,15 +20,7 @@ class CAMBIO extends Controller
     {
     }
 
-    public function store()
-    {
-    }
-
     public function edit()
-    {
-    }
-
-    public function update()
     {
     }
 
