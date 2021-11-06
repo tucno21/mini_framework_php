@@ -14,6 +14,7 @@ $routes->get('/register', [HomeController::class, 'register']);
 $routes->post('/register', [HomeController::class, 'register']);
 $routes->get('/logout', [HomeController::class, 'logout']);
 $routes->get('/dashboard', [HomeController::class, 'dashboard']);
+$routes->get('/dashboard/prueba', [HomeController::class, 'prueba']);
 
 
 //ejecutar los los parametros enviados por get y post

@@ -13,13 +13,17 @@ class Middleware
 
     public function run($session, $restrictions)
     {
+
         if ($session === false) {
 
             $url = $this->request->getPath();
             $resp = array_search($url, $restrictions);
 
-            if (is_int($resp)) {
-                // return view('error');
+            //strstr estrae la cadena de texto de una parte de su busqueda
+            $urlNotPermission = strstr($url, $restrictions[$resp], false);
+
+            // if (is_int($resp)) {
+            if ($urlNotPermission) {
                 header("Location: /");
             }
         }

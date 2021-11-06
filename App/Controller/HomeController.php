@@ -85,6 +85,11 @@ class HomeController extends Controller
         ]);
     }
 
+    public function prueba()
+    {
+        echo 'hola de una seccion restringida';
+    }
+
     public function logout()
     {
         // session_start();
