@@ -256,7 +256,7 @@ desde el controlador y enviar datos
             'email' => 'required|email|unique:HomeModel,email',
             'password' => 'required|min:3|max:12|matches:password_confirm',
             'password_confirm' => 'required',
-            'photo' => 'requiredImg|maxSize:2|type:jpeg,png,zip,svg+xml',
+            'photo' => 'requiredFile|maxSize:2|type:jpeg,png,zip,svg+xml',
         ]);
 
         if ($validator !== true) {
