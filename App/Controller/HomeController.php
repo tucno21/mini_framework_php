@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function login()
     {
-        $data = $this->request()->isPost();
+        $data = $this->request()->getInput();
 
         $valid = $this->validate($data, [
             'email' => 'required|email|not_unique:HomeModel,email',
@@ -52,7 +52,7 @@ class HomeController extends Controller
     public function register()
     {
 
-        $data = $this->request()->isPost();
+        $data = $this->request()->getInput();
 
         $validator = $this->validate($data, [
             'name' => 'required|alpha',

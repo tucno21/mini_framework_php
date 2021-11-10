@@ -25,12 +25,12 @@ class Request
 
     public function isGet()
     {
-        return $this->getMethod() === 'get';
+        return $this->methodWeb() === 'get';
     }
 
     public function isPost()
     {
-        return $this->getMethod() === 'post';
+        return $this->methodWeb() === 'post';
     }
 
     public function getInput()
