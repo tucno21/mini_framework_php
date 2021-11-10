@@ -114,11 +114,17 @@ return view('login', []);
 return redirect('login', []);
 ```
 
-Capturar datos del get y post sanitizados PHP
+Verificar si es GET o POST ($result = true/false)
 
 ```php
-$data = $this->request()->isGet();
-$data = $this->request()->isPost();
+$result = $this->request()->isGet();
+$result = $this->request()->isPost();
+```
+
+Capturar datos del formulario sanitizados PHP
+
+```php
+$data = $this->request()->getInput();
 ```
 
 ## FUNCIONES MODEL

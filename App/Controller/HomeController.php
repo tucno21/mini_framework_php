@@ -24,26 +24,31 @@ class HomeController extends Controller
 
     public function login()
     {
-        $data = $this->request()->getInput();
+        $result = $this->request()->isPost();
+        
+        if($result){
+            $data = $this->request()->getInput();
 
-        $valid = $this->validate($data, [
-            'email' => 'required|email|not_unique:HomeModel,email',
-            'password' => 'required|password_verify:HomeModel,email',
-        ]);
-
-        if ($valid !== true) {
-
-            return $this->view('login', [
-                'err' =>  $valid,
-                'data' => (object)$data,
+            $valid = $this->validate($data, [
+                'email' => 'required|email|not_unique:HomeModel,email',
+                'password' => 'required|password_verify:HomeModel,email',
             ]);
-        } else {
+    
+            if ($valid !== true) {
+    
+                return $this->view('login', [
+                    'err' =>  $valid,
+                    'data' => (object)$data,
+                ]);
+            } else {
+    
+                $user = $this->homeModel->columns('id, username, email, name')->where('email', $data['email'])->first();
+    
+                $this->sessionSet('user', $user);
+    
+                return $this->redirect('/');
+            }
 
-            $user = $this->homeModel->columns('id, username, email, name')->where('email', $data['email'])->first();
-
-            $this->sessionSet('user', $user);
-
-            return $this->redirect('/');
         }
 
         return view('login');
