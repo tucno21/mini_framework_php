@@ -1,7 +1,7 @@
 <?= extend('/layout/head.php') ?>
 
 <?php
-d($_SESSION);
+// d($_SESSION);
 ?>
 
 <h1>home</h1>
