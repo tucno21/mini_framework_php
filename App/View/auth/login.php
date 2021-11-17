@@ -1,4 +1,4 @@
-<?= extend('/layout/head.php') ?>
+<?= extend('/frontend/layout/head.php') ?>
 
 <div class="container">
     <form action="<?= base_url('/login') ?>" method="POST">
@@ -27,4 +27,4 @@
 
 <a class="nav-link" href="/register">Registrarce</a>
 
-<?= extend('/layout/footer.php') ?>
+<?= extend('/frontend/layout/footer.php') ?>

@@ -1,4 +1,4 @@
-<?= extend('/layout/head.php') ?>
+<?= extend('/frontend/layout/head.php') ?>
 
 <h1>Dashboard</h1>
 
@@ -35,4 +35,4 @@
 
 </div>
 
-<?= extend('/layout/footer.php') ?>
+<?= extend('/frontend/layout/footer.php') ?>

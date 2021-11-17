@@ -43,7 +43,7 @@ class Router
         //cuando los parametros no existe en el router error 404
         if ($callback == null) {
             $this->responseHTTP->setStatusCode(404);
-            echo $this->renderView('layout/404');
+            echo $this->renderView('404');
         }
 
         //Comprueba si una variable es de tipo string

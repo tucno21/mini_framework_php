@@ -1,57 +1,48 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Auth;
 
 use App\Model\HomeModel;
 use App\System\Controller;
 
-class HomeController extends Controller
+class AuthController extends Controller
 {
-    protected $homeModel;
 
     public function __construct()
     {
         $this->homeModel = new HomeModel();
-        $this->middleware($this->sessionGet('user'), ['/dashboard']);
-    }
-
-    public function home()
-    {
-        return view('home', [
-            'var' => 'es una variable',
-        ]);
+        // $this->middleware($this->sessionGet('user'), ['/dashboard']);
     }
 
     public function login()
     {
         $result = $this->request()->isPost();
-        
-        if($result){
+
+        if ($result) {
             $data = $this->request()->getInput();
 
             $valid = $this->validate($data, [
                 'email' => 'required|email|not_unique:HomeModel,email',
                 'password' => 'required|password_verify:HomeModel,email',
             ]);
-    
+
             if ($valid !== true) {
-    
+
                 return $this->view('login', [
                     'err' =>  $valid,
                     'data' => (object)$data,
                 ]);
             } else {
-    
+
                 $user = $this->homeModel->columns('id, username, email, name')->where('email', $data['email'])->first();
-    
+
                 $this->sessionSet('user', $user);
-    
+
                 return $this->redirect('/');
             }
-
         }
 
-        return view('login');
+        return view('auth/login');
     }
 
     public function register()
@@ -69,30 +60,17 @@ class HomeController extends Controller
 
         if ($validator !== true) {
 
-            return $this->view('register', [
+            return $this->view('auth/register', [
                 'err' =>  $validator,
                 'data' => (object)$data,
             ]);
         } else {
 
             $this->homeModel->create($data);
-            return $this->redirect('login');
+            return $this->redirect('auth/login');
         }
 
-        return view('register');
-    }
-
-    public function dashboard()
-    {
-        $users = $this->homeModel->findAll();
-        return view('dashboard', [
-            'users' => $users,
-        ]);
-    }
-
-    public function prueba()
-    {
-        echo 'hola de una seccion restringida';
+        return view('auth/register');
     }
 
     public function logout()
