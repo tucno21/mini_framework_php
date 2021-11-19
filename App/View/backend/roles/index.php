@@ -36,24 +36,39 @@
 
             <div class="modal-body">
 
-                <form class="px-3" action="#">
+                <form class="px-3" action="<?= base_url('/proles/create') ?>" method="post">
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
-                        <input class="form-control is-invalid" type="text" id="name" required="">
-                        <div class="invalid-feedback">
-                            Please choose a username.
-                        </div>
+                        <input class="form-control <?= isset($err->name) ? 'is-invalid' : '' ?>" name="name" type="text" id="name">
+
+                        <?php if (isset($err->name)) : ?>
+                            <div class="invalid-feedback">
+                                <?= $err->name ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción</label>
-                        <input class="form-control" type="text" id="description" required="">
+                        <input class="form-control <?= isset($err->description) ? 'is-invalid' : '' ?>" type="text" name="description" id="description">
+
+                        <?php if (isset($err->description)) : ?>
+                            <div class="invalid-feedback">
+                                <?= $err->description ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
                         <label for="estado" class="form-label">Estado</label>
-                        <input class="form-control" type="text" id="estado" required="">
+                        <input class="form-control <?= isset($err->status) ? 'is-invalid' : '' ?>" type="text" name="status" id="estado">
+
+                        <?php if (isset($err->status)) : ?>
+                            <div class="invalid-feedback">
+                                <?= $err->status ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3 text-center">
