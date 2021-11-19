@@ -131,10 +131,12 @@ $linksCss = [
     // 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900',
     $linkURL . '/built/css/bootstrap.min.css',
     $linkURL . '/built/css/app.min.css',
+    '//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css',
 ];
 
 $linksScript = [
     $linkURL . '/built/js/vendor.js',
     $linkURL . '/built/js/app.js',
     'https://kit.fontawesome.com/1d88763075.js',
+    '//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js',
 ];
