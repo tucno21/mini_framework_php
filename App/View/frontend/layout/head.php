@@ -36,7 +36,7 @@
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('/dashboard') ?>">Dashboard</a>
+                            <a class="nav-link" href="<?= base_url('/panelcontrol') ?>">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('/logout') ?>">Cerra sesión</a>

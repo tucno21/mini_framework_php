@@ -2,9 +2,10 @@
 require_once dirname(__DIR__) . '/System/Autoload.php';
 
 use App\System\Router;
+use App\Controller\Backend\Dashboard;
 use App\Controller\Auth\AuthController;
 use App\Controller\Frontend\HomeController;
-use App\Controller\Backend\DashboardController;
+
 
 
 $routes = new Router();
@@ -19,8 +20,8 @@ $routes->post('/register', [AuthController::class, 'register']);
 $routes->get('/logout', [AuthController::class, 'logout']);
 
 
-$routes->get('/dashboard', [DashboardController::class, 'dashboard']);
-$routes->get('/dashboard/prueba', [DashboardController::class, 'prueba']);
+$routes->get('/panelcontrol', [Dashboard::class, 'index']);
+// $routes->get('/dashboard/prueba', [DashboardController::class, 'prueba']);
 
 
 //ejecutar los los parametros enviados por get y post

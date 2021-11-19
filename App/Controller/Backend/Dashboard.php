@@ -5,7 +5,7 @@ namespace App\Controller\Backend;
 use App\Model\HomeModel;
 use App\System\Controller;
 
-class DashboardController extends Controller
+class Dashboard extends Controller
 {
 
     public function __construct()
@@ -14,16 +14,16 @@ class DashboardController extends Controller
         $this->middleware($this->sessionGet('user'), ['/dashboard']);
     }
 
-    public function dashboard()
+    public function index()
     {
         $users = $this->homeModel->findAll();
-        return view('backend/dashboard', [
+        return view('backend/index', [
             'users' => $users,
         ]);
     }
 
-    public function prueba()
-    {
-        echo 'hola de una seccion restringida';
-    }
+    // public function prueba()
+    // {
+    //     echo 'hola de una seccion restringida';
+    // }
 }
