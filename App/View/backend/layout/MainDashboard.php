@@ -34,9 +34,7 @@ $menuSession = [
 
 //CREACION DE ENLACES PARA EL MENU SIDEBAR
 $linksSidebar = [
-    [
-        'header' => 'Navigation',
-    ],
+    // ['header' => 'Navigation',],
     [
         'mode' => 'menu',
         'text' => 'Dashboard',
@@ -44,13 +42,33 @@ $linksSidebar = [
         'icon' => 'far fa-comment',
     ],
     [
-        'header' => 'Addons',
+        'mode' => 'submenu',
+        'text'    => 'Usuarios',
+        'url'    => '#',
+        'icon' => 'fas fa-user',
+        'submenu' => [
+            [
+                'text' => 'Usuarios',
+                'url'  => base_url('/pusuarios'),
+                'icon' => 'fas fa-circle',
+            ],
+            [
+                'text' => 'Roles',
+                'url'  => base_url('/proles'),
+                'icon' => 'fas fa-circle',
+            ],
+            [
+                'text' => 'Permisos',
+                'url'  => base_url('/ppermisos'),
+                'icon' => 'fas fa-circle',
+            ],
+        ],
     ],
     [
         'mode' => 'menu',
-        'text' => 'Usuarios',
+        'text' => 'Productos',
         'url'  => '/users',
-        'icon' => 'far fa-comment',
+        'icon' => 'fas fa-piggy-bank',
     ],
     [
         'mode' => 'menu',
