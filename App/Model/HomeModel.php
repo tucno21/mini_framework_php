@@ -10,7 +10,7 @@ class HomeModel extends Model
     protected static $table       = 'users';
     protected static $primaryKey  = 'id';
     //fields Table for sync up
-    protected static $allowedFields = ['username', 'email', 'password', 'name'];
+    protected static $allowedFields = ['dni', 'name', 'surnames', 'phone', 'email', 'password', 'nit', 'nombrefiscal', 'direccionfiscal', 'token', 'rol_id', 'status'];
     //if there is a password field encrypt
     //the field must be the same $allowedFields
     protected static $passEncrypt = true;

@@ -7,7 +7,7 @@ $baseURL = 'http://mini_framework_php.test';
 $localhost = 'localhost';
 $user = 'root';
 $password = 'root';
-$dbName = 'mvc_framework';
+$dbName = 'roles_permisos';
 
 
 //nombre de la carpeta para almacenar imagenes

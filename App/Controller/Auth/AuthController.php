@@ -34,7 +34,7 @@ class AuthController extends Controller
                 ]);
             } else {
 
-                $user = $this->homeModel->columns('id, username, email, name')->where('email', $data['email'])->first();
+                $user = $this->homeModel->columns('id, email, name, surnames')->where('email', $data['email'])->first();
 
                 $this->sessionSet('user', $user);
 
