@@ -1,7 +1,3 @@
-<?php
-// include 'minton/minton.php';
-// include 'minton/head.php';
-?>
 <?= extend('/backend/layout/head.php') ?>
 
 
@@ -51,6 +47,3 @@
 
 
 <?= extend('/backend/layout/footer.php') ?>
-<?php
-// include 'minton/footer.php';
-?>

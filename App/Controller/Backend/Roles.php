@@ -14,6 +14,9 @@ class Roles extends Controller
 
     public function index()
     {
+        return view('backend/roles/index', [
+            // 'users' => $users,
+        ]);
     }
 
     public function create()
