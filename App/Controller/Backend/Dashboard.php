@@ -11,7 +11,7 @@ class Dashboard extends Controller
     public function __construct()
     {
         $this->homeModel = new HomeModel();
-        $this->middleware($this->sessionGet('user'), ['/dashboard']);
+        $this->middleware($this->sessionGet('user'), ['/panelcontrol']);
     }
 
     public function index()

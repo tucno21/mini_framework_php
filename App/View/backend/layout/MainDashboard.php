@@ -26,7 +26,7 @@ $menuSession = [
     ],
     [
         'text' => 'Logout',
-        'url'  => 'admin/cerrar',
+        'url'  => base_url('/logout'),
         'icon' => 'fas fa-sign-out-alt',
     ],
 ];
