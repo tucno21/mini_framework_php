@@ -24,17 +24,19 @@ class HomeModel extends Model
 
 
     //own function of the model
-    public function newQuery()
+    public function permisos($data)
     {
-        // $data = $this->queryFirst('SELECT * FROM users');
-        $data = $this->queryAll('SELECT * FROM users');
-        return $data;
-    }
+        // $dataM = $this->queryMod("SELECT U.name,U.surnames,U.email,U.status,U.dni,P.* FROM users as U CROSS JOIN permisos as P ON U.rol_id=P.rol_id WHERE $colum = '$data'");
+        // $dataM = $this->queryMod("SELECT * FROM permisos WHERE rol_id = '$data'");
 
-    //own function of the model
-    public function queryNew()
-    {
-        $data = self::$db->query('SELECT * FROM users');
+        $dataM = $this->queryMod('SELECT P.*, m.title FROM permisos as P INNER JOIN modulo as M ON p.modulo_id=m.id WHERE P.rol_id = ' . $data);
+
+        $data = array();
+
+        foreach ($dataM as $key => $value) {
+            $data[$value->title] =  $value;
+        }
+
         return $data;
     }
 }

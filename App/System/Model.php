@@ -236,15 +236,24 @@ class Model
         return $result[0];
     }
 
+    //RECIVE UN QUERY Y ENVIA UN OBJETO
+    public function queryMod($query)
+    {
+        $result = $this->readDB($query);
+        return $result;
+    }
+
     private function readDB($query)
     {
         $stmt = self::$db->query($query);
-        // self::$db->close();
 
         $array = [];
         while ($object = $stmt->fetch_object()) {
             $array[] = $object;
         }
+
+        // self::$db->close();
+        // $stmt->free();
 
         return  $array;
     }

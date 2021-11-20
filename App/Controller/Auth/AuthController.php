@@ -4,13 +4,17 @@ namespace App\Controller\Auth;
 
 use App\Model\HomeModel;
 use App\System\Controller;
+use App\Model\PermisosModel;
 
 class AuthController extends Controller
 {
+    protected $homeModel;
+    // protected $PermisosModel;
 
     public function __construct()
     {
         $this->homeModel = new HomeModel();
+        // $this->PermisosModel = new PermisosModel();
         // $this->middleware($this->sessionGet('user'), ['/dashboard']);
     }
 
@@ -34,8 +38,12 @@ class AuthController extends Controller
                 ]);
             } else {
 
-                $user = $this->homeModel->columns('id, email, name, surnames')->where('email', $data['email'])->first();
+                $user = $this->homeModel->columns('id, email, name, surnames, rol_id')->where('email', $data['email'])->first();
 
+                $permisos = $this->homeModel->permisos($user->rol_id);
+                $user->permisos = $permisos;
+
+                // dd($user->permisos["Dashboard"]->read);
                 $this->sessionSet('user', $user);
 
                 return $this->redirect('/');
