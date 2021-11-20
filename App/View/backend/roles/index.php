@@ -19,6 +19,52 @@
         <!-- end page title -->
 
         <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Header
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped dt-responsive nowrap w-100" id="rolestable">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>admin</td>
+                                <td>control total</td>
+                                <td>activo</td>
+                                <td>ddd</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>vendedor</td>
+                                <td>control total</td>
+                                <td>activo</td>
+                                <td>ddd</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>contador</td>
+                                <td>control total</td>
+                                <td>activo</td>
+                                <td>ddd</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="card-footer text-muted">
+                    Footer
+                </div>
+            </div>
+
 
         </div>
 

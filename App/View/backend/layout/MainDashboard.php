@@ -131,12 +131,20 @@ $linksCss = [
     // 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900',
     $linkURL . '/built/css/bootstrap.min.css',
     $linkURL . '/built/css/app.min.css',
-    '//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css',
+    // 'https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css',
+    'https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css',
+    'https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css',
 ];
 
 $linksScript = [
     $linkURL . '/built/js/vendor.js',
     $linkURL . '/built/js/app.js',
     'https://kit.fontawesome.com/1d88763075.js',
-    '//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js',
+    // 'https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js',
+    'https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js',
+    'https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js',
+    'https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js',
+    'https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js',
+    'https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js',
+    $linkURL . '/built/js/roles.js',
 ];
