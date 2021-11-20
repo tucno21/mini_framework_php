@@ -15,7 +15,7 @@ class Roles extends Controller
 
     public function __construct()
     {
-        // $this->middleware($this->sessionGet('user'), ['/dashboard']);
+        $this->middleware($this->sessionGet('user'), ['/proles']);
         $this->rolModel = new RolModel();
         $this->PermisosModel = new PermisosModel();
         $this->ModuloModel = new ModuloModel();

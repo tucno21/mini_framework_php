@@ -11,7 +11,7 @@ class Modulos extends Controller
 
     public function __construct()
     {
-        // $this->middleware($this->sessionGet('user'), ['/dashboard']);
+        $this->middleware($this->sessionGet('user'), ['/pmodulos']);
         $this->ModuloModel = new ModuloModel();
     }
 
