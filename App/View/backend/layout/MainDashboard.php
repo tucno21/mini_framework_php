@@ -58,8 +58,8 @@ $linksSidebar = [
                 'icon' => 'fas fa-circle',
             ],
             [
-                'text' => 'Permisos',
-                'url'  => base_url('/ppermisos'),
+                'text' => 'Modulos',
+                'url'  => base_url('/pmodulos'),
                 'icon' => 'fas fa-circle',
             ],
         ],

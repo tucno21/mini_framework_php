@@ -27,6 +27,9 @@ $routes->get('/panelcontrol', [Dashboard::class, 'index']);
 $routes->get('/proles', [Roles::class, 'index']);
 $routes->get('/proles/create', [Roles::class, 'create']);
 $routes->post('/proles/create', [Roles::class, 'create']);
+$routes->get('/proles/edit', [Roles::class, 'edit']);
+$routes->post('/proles/edit', [Roles::class, 'edit']);
+$routes->get('/proles/delete', [Roles::class, 'destroy']);
 
 
 //ejecutar los los parametros enviados por get y post

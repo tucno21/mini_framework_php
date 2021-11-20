@@ -38,10 +38,19 @@
                                 <tr>
                                     <td><?= $rol->id ?></td>
                                     <td><?= $rol->name ?></td>
-                                    <td><?= $rol->status ?></td>
+                                    <?php if ($rol->status == 1) : ?>
+                                        <td><span class="badge bg-success">Activo</span></td>
+                                    <?php else : ?>
+                                        <td><span class="badge bg-danger">Inactivo</span></td>
+                                    <?php endif; ?>
+
                                     <td>
-                                        <a href="#" class="btn btn-outline-info rounded-pill btn-xs" data-bs-toggle="modal" data-bs-target="#edit-modal" data-id="<?= $rol->id ?>" data-name="<?= $rol->name ?>"><i class="far fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-danger rounded-pill btn-xs" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="<?= $rol->id ?>" data-name="<?= $rol->name ?>"><i class="far fa-trash-alt"></i></a>
+                                        <a href="<?= base_url('/proles/permisos?id=' . $rol->id) ?>" class="btn btn-outline-dark rounded-pill btn-xs">
+                                            <i class="fas fa-key"></i></a>
+                                        <a href="<?= base_url('/proles/edit?id=' . $rol->id) ?>" class="btn btn-outline-info rounded-pill btn-xs">
+                                            <i class="far fa-edit"></i></a>
+                                        <a href="<?= base_url('/proles/delete?id=' . $rol->id) ?>" class="btn btn-outline-danger rounded-pill btn-xs">
+                                            <i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

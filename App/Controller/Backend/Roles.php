@@ -51,9 +51,48 @@ class Roles extends Controller
 
     public function edit()
     {
+        $result = $this->request()->isPost();
+
+        if ($result) {
+            $data = $this->request()->getInput();
+
+            $valid = $this->validate($data, [
+                'name' => 'required',
+            ]);
+
+            if (isset($data['status'])) {
+                $data['status'] = 1;
+            } else {
+                $data['status'] = 0;
+            }
+            if ($valid !== true) {
+
+                return $this->view('backend/roles/create', [
+                    'err' =>  $valid,
+                    'data' => (object)$data,
+                ]);
+            } else {
+                $this->rolModel->update($data['id'], $data);
+                return $this->redirect('proles');
+            }
+        } else {
+            $data = $this->request()->getInput();
+
+            $rol = $this->rolModel->where('id', $data['id'])->first();
+
+            return $this->view('backend/roles/edit', [
+                'rol' =>  $rol,
+            ]);
+        }
     }
 
     public function destroy()
     {
+        $result = $this->request()->isGet();
+        if ($result) {
+            $data = $this->request()->getInput();
+            $this->rolModel->delete($data['id']);
+            return $this->redirect('proles');
+        }
     }
 }
