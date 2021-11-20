@@ -95,7 +95,7 @@ class Model
 
         $cv = [];
         foreach ($send as $key => $value) {
-            $cv[] = "{$key}='{$value}'";
+            $cv[] = "`{$key}`='{$value}'";
         }
         $primaryKey = static::$primaryKey;
 
