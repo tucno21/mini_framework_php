@@ -95,4 +95,30 @@ class Roles extends Controller
             return $this->redirect('proles');
         }
     }
+
+    public function permissions()
+    {
+        $result = $this->request()->isPost();
+
+        // if ($result) {
+        //     $data = $this->request()->getInput();
+
+        //     $valid = $this->validate($data, [
+        //         'name' => 'required',
+        //     ]);
+
+        //     if ($valid !== true) {
+
+        //         return $this->view('backend/roles/permissions', [
+        //             'err' =>  $valid,
+        //             'data' => (object)$data,
+        //         ]);
+        //     } else {
+        //         $this->rolModel->create($data);
+        //         return $this->redirect('proles');
+        //     }
+        // }
+
+        return $this->view('backend/roles/permissions', []);
+    }
 }

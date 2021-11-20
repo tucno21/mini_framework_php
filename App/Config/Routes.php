@@ -3,6 +3,7 @@ require_once dirname(__DIR__) . '/System/Autoload.php';
 
 use App\System\Router;
 use App\Controller\Backend\Roles;
+use App\Controller\Backend\Modulos;
 use App\Controller\Backend\Dashboard;
 use App\Controller\Auth\AuthController;
 use App\Controller\Frontend\HomeController;
@@ -30,6 +31,13 @@ $routes->post('/proles/create', [Roles::class, 'create']);
 $routes->get('/proles/edit', [Roles::class, 'edit']);
 $routes->post('/proles/edit', [Roles::class, 'edit']);
 $routes->get('/proles/delete', [Roles::class, 'destroy']);
+
+$routes->get('/pmodulos', [Modulos::class, 'index']);
+$routes->get('/pmodulos/create', [Modulos::class, 'create']);
+$routes->post('/pmodulos/create', [Modulos::class, 'create']);
+$routes->get('/pmodulos/edit', [Modulos::class, 'edit']);
+$routes->post('/pmodulos/edit', [Modulos::class, 'edit']);
+$routes->get('/pmodulos/delete', [Modulos::class, 'destroy']);
 
 
 //ejecutar los los parametros enviados por get y post
