@@ -1,5 +1,13 @@
 <?php
 
+use App\System\Session;
+
+$ses = new Session;
+$session = $ses->get('user');
+// dd($user->permisos["Dashboard"]->read);
+// dd($session->permisos["Dashboard"]->read);
+
+
 // DATOS GENERALES ADMIN
 $title = 'Minton';
 $titleShort = 'M';
@@ -32,15 +40,18 @@ $menuSession = [
 ];
 
 
+
 //CREACION DE ENLACES PARA EL MENU SIDEBAR
 $linksSidebar = [
     // ['header' => 'Navigation',],
-    [
-        'mode' => 'menu',
-        'text' => 'Dashboard',
-        'url'  => '/',
-        'icon' => 'far fa-comment',
-    ],
+    $session->permisos["Dashboard"]->read == 1 ?
+        [
+            'mode' => 'menu',
+            'text' => 'Dashboard',
+            'url'  => '/',
+            'icon' => 'far fa-comment',
+        ] : '',
+
     [
         'mode' => 'submenu',
         'text'    => 'Usuarios',

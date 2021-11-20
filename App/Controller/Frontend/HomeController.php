@@ -14,6 +14,8 @@ class HomeController extends Controller
 
     public function home()
     {
+        // $session = $this->sessionGet('user');
+
         return view('frontend/home', [
             'var' => 'es una variable',
         ]);
