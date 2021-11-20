@@ -95,13 +95,13 @@ class Model
 
         $cv = [];
         foreach ($send as $key => $value) {
-            $cv[] = "{$key}='{$value}'";
+            $cv[] = "`{$key}`='{$value}'";
         }
         $primaryKey = static::$primaryKey;
 
         $columValue = join(', ', $cv);
         $query = "UPDATE " . static::$table . " SET $columValue WHERE $primaryKey= '" . self::$db->escape_string($id) . "'";
-
+        // dd($query);
         $stmt = self::$db->query($query);
 
         if (self::$db->affected_rows > 0) {

@@ -31,6 +31,8 @@ $routes->post('/proles/create', [Roles::class, 'create']);
 $routes->get('/proles/edit', [Roles::class, 'edit']);
 $routes->post('/proles/edit', [Roles::class, 'edit']);
 $routes->get('/proles/delete', [Roles::class, 'destroy']);
+$routes->get('/proles/permisos', [Roles::class, 'permissions']);
+$routes->post('/proles/permisos', [Roles::class, 'permissions']);
 
 $routes->get('/pmodulos', [Modulos::class, 'index']);
 $routes->get('/pmodulos/create', [Modulos::class, 'create']);

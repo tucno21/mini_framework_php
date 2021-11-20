@@ -53,13 +53,13 @@ $linksSidebar = [
                 'icon' => 'fas fa-circle',
             ],
             [
-                'text' => 'Roles',
-                'url'  => base_url('/proles'),
+                'text' => 'Modulos',
+                'url'  => base_url('/pmodulos'),
                 'icon' => 'fas fa-circle',
             ],
             [
-                'text' => 'Modulos',
-                'url'  => base_url('/pmodulos'),
+                'text' => 'Roles',
+                'url'  => base_url('/proles'),
                 'icon' => 'fas fa-circle',
             ],
         ],
