@@ -18,7 +18,6 @@ class Roles extends Controller
     public function index()
     {
         $roles = $this->rolModel->findAll();
-
         return view('backend/roles/index', [
             'roles' => $roles,
         ]);
@@ -33,21 +32,21 @@ class Roles extends Controller
 
             $valid = $this->validate($data, [
                 'name' => 'required',
-                'description' => 'required',
-                'status' => 'required',
             ]);
 
             if ($valid !== true) {
 
-                return $this->view('backend/roles/index', [
+                return $this->view('backend/roles/create', [
                     'err' =>  $valid,
                     'data' => (object)$data,
                 ]);
             } else {
                 $this->rolModel->create($data);
-                return $this->redirect('/proles');
+                return $this->redirect('proles');
             }
         }
+
+        return $this->view('backend/roles/create', []);
     }
 
     public function edit()

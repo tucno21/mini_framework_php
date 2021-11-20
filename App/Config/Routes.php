@@ -25,6 +25,7 @@ $routes->get('/panelcontrol', [Dashboard::class, 'index']);
 // $routes->get('/dashboard/prueba', [DashboardController::class, 'prueba']);
 
 $routes->get('/proles', [Roles::class, 'index']);
+$routes->get('/proles/create', [Roles::class, 'create']);
 $routes->post('/proles/create', [Roles::class, 'create']);
 
 

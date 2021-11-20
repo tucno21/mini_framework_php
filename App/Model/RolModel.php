@@ -10,7 +10,7 @@ class RolModel extends Model
     protected static $table       = 'roles';
     protected static $primaryKey  = 'id';
     //fields Table for sync up
-    protected static $allowedFields = ['name', 'description', 'status'];
+    protected static $allowedFields = ['name', 'status'];
     //if there is a password field encrypt
 
     // Dates
